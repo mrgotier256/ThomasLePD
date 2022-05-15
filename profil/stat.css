@@ -1,0 +1,73 @@
+article{
+    height:631px;
+    overflow:auto;
+    background-color: rgb(82, 82, 82);
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+}
+.gerard1{
+    height:313px;
+    overflow:auto;
+    background-color: rgb(82, 82, 82);
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    margin-bottom:5px 0;
+}
+.gerard2{
+    height:312px;
+    overflow:auto;
+    background-color: rgb(82, 82, 82);
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    margin:5px 0;
+}
+html,body{
+    padding:0;
+    color:white;
+    height: 100%;
+    font-family: 'Times New Roman', Times, serif;
+}
+main{
+    background-color: rgb(73, 73, 73);
+    height: 100%;
+    padding:0;
+    padding-top:60px;
+}
+footer{
+    background-color: rgb(31, 31, 31);
+    color:azure;
+}
+.pad{
+    padding-top:1px
+}
+img{
+    width: 150px;
+    border: 2px solid white;
+}
+
+@media screen and (max-width: 470px) {
+    .bout{
+        height:10%;
+    }
+}
+.bout{
+    height:10%;
+}
+.prof{
+    width: 100%;
+    margin:auto;
+}
+a{
+    outline: none;
+    text-decoration: none;
+}
+.deco{
+    color:rgb(255, 255, 255);
+    background-color:darkred;
+    border: 2px black solid;
+    padding:4px;
+}
+footer a{
+    padding: 0 5px;
+    color:blanchedalmond;
+}

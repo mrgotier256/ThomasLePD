@@ -1,0 +1,30 @@
+article{
+    height:733px;
+    overflow:auto;
+    background-color: #5a3f43;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+}
+html,body{
+    padding:0;
+    color:white;
+    height: 100%;
+    font-family: 'Times New Roman', Times, serif;
+}
+main{
+    background-color: #c4818f;
+    height: 100%;
+    padding:0;
+    padding-top:60px;
+}
+footer{
+    background-color: #2e1b1e;
+    color:azure;
+}
+.pad{
+    padding-top:1px
+}
+footer a{
+    padding: 0 5px;
+    color:blanchedalmond;
+}

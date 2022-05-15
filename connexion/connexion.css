@@ -1,0 +1,63 @@
+html,
+body {
+    padding: 0;
+    color: white;
+    height: 100%;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+@media screen and (max-width:470px) {
+
+    html,
+    body {
+        padding: 0;
+        color: white;
+        height: 100%;
+        font-family: 'Times New Roman', Times, serif;
+        background-color: #c5a7a1;
+    }
+}
+
+main {
+    background-color: #c5a7a1;
+    height: 85%;
+    padding: 0;
+    padding-top: 60px;
+    text-align: center;
+}
+
+
+
+footer {
+    background-color: #2b241f;
+    color: azure;
+    height: 15%
+}
+
+.pad {
+    padding-top: 1px
+}
+
+a {
+    color: white;
+}
+
+fieldset {
+    width: 50%;
+    margin: auto;
+    background-color: #6d5d5d;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    padding: 3px;
+}
+
+@media screen and (max-width: 470px) {
+    fieldset {
+        width: 100%;
+    }
+}
+
+footer a {
+    padding: 0 5px;
+    color: blanchedalmond;
+}

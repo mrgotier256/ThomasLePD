@@ -1,0 +1,61 @@
+section {
+    height: 535px;
+    overflow: auto;
+    background-color: #6d5d5d;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+}
+
+#mainCarousel {
+    width: 75%;
+    margin: auto;
+    border: 2px solid white;
+}
+
+html,
+body {
+    padding: 0;
+    height: 100%;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+main {
+    background-color: #c5a7a1;
+    padding: 0;
+    padding-top: 60px;
+}
+
+footer {
+    background-color: #2b241f;
+    color: azure;
+}
+
+.pad {
+    padding-top: 1px
+}
+
+footer a {
+    padding: 0 5px;
+    color: blanchedalmond;
+}
+
+.bdd {
+    background-color: #a78c86;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    padding: 4px;
+    margin: 5px;
+}
+
+.joie {
+    text-decoration: none;
+    color: black;
+}
+
+.decol {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 139, 134);
+    border: 2px black solid;
+    padding-left: 28px;
+    padding-right: 28px;
+}

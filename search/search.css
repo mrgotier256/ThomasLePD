@@ -1,0 +1,102 @@
+article{
+    height:831px;
+    overflow:auto;
+    background-color: #6d5d5d;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+}
+
+html,body{
+    padding:0;
+    color:white;
+    height: 100%;
+    font-family: 'Times New Roman', Times, serif;
+}
+main{
+    background-color: #c5a7a1;
+    padding:0;
+    padding-top:60px;
+}
+footer{
+    background-color: #2b241f;
+    color:azure;
+}
+.pad{
+    padding-top:1px
+}
+footer a{
+    padding: 0 5px;
+    color:blanchedalmond;
+}
+img{
+    width: 150px;
+    border: 2px solid white;
+}
+
+@media screen and (max-width: 470px) {
+    .bout{
+        height:10%;
+    }
+}
+.bout{
+    height:10%;
+}
+.prof{
+    width: 100%;
+    margin:auto;
+}
+a{
+    outline: none;
+    text-decoration: none;
+}
+.deco {
+    color: rgb(255, 255, 255);
+    background-color: darkred;
+    border: 2px black solid;
+    padding: 4px;
+}
+
+.etudiant{
+    padding:17px;
+    background-color: #ffd000;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    margin:5px;
+    color: black;
+}
+.pilote{
+    padding:17px;
+    background-color: #fb542f;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    margin:5px;
+    color: black;
+}
+.entreprise{
+    padding:17px;
+    background-color: #006aff;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    margin:5px;
+    color: black;
+}
+.offre{
+    padding:17px;
+    background-color: #0a9602;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    margin:5px;
+    color: black;
+}
+.delegue{
+    padding:17px;
+    background-color: #9f0087;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    margin:5px;
+    color: black;
+}
+.joie{
+    text-decoration: none;
+    color:black;
+}
