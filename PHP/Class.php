@@ -292,11 +292,26 @@ class Eleve
         return $nombre['nombre'];
     }
 
-    public function addEleve()
+    public function addEleve($identifiant, $mdp, $nom, $prenom, $email, $centre, $ID_Role, $promotion)
     {
         $this->connexion();
-        $utilisateur = $this->_connexion->query("");
-        return $utilisateur->fetch();
+        $stmt = $this->_connexion->prepare('INSERT INTO projet.authentification (login, mdp) VALUES (
+            ' . $this->_connexion->quote($identifiant) . ', 
+            ' . $this->_connexion->quote($mdp) . '); 
+            INSERT INTO projet.user (nom, prenom, email, centre, ID_Role, id_auth) VALUES (
+                ' . $this->_connexion->quote($nom) . ', 
+                ' . $this->_connexion->quote($prenom) . ', 
+                ' . $this->_connexion->quote($email) . ', 
+                ' . $this->_connexion->quote($centre) . ', 
+                ' . $this->_connexion->quote($ID_Role) . ', 
+                (SELECT id_auth FROM authentification WHERE login = 
+                ' . $this->_connexion->quote($identifiant) . '
+            )); INSERT INTO projet.eleve(promotion, id_user) VALUES (
+                ' . $this->_connexion->quote($promotion) . '
+                , (SELECT id_user FROM user WHERE email = 
+                ' . $this->_connexion->quote($email) . '));');
+        var_dump($stmt);
+        return $stmt->execute();
     }
 
     public function delEleve()
@@ -358,11 +373,22 @@ class Delegue
         return $nombre['nombre'];
     }
 
-    public function addDelegue()
+    public function addDelegue($identifiant, $mdp, $nom, $prenom, $email, $centre, $ID_Role)
     {
         $this->connexion();
-        $utilisateur = $this->_connexion->query("");
-        return $utilisateur->fetch();
+        $stmt = $this->_connexion->prepare('INSERT INTO projet.authentification (login, mdp) VALUES (
+            ' . $this->_connexion->quote($identifiant) . ', 
+            ' . $this->_connexion->quote($mdp) . '); 
+            INSERT INTO projet.user (nom, prenom, email, centre, ID_Role, id_auth) VALUES (
+                ' . $this->_connexion->quote($nom) . ', 
+                ' . $this->_connexion->quote($prenom) . ', 
+                ' . $this->_connexion->quote($email) . ', 
+                ' . $this->_connexion->quote($centre) . ', 
+                ' . $this->_connexion->quote($ID_Role) . ', 
+                (SELECT id_auth FROM authentification WHERE login = 
+                ' . $this->_connexion->quote($identifiant) . '));');
+
+        return $stmt->execute();
     }
 
     public function delDelegue()
@@ -417,20 +443,25 @@ class Pilote
         return $nombre['nombre'];
     }
 
-    public function addPilote($identifiant, $mdp, $nom, $prenom, $email, $centre, $ID_Role, $id_auth, $promotion_assignees, $id_user)
+    public function addPilote($identifiant, $mdp, $nom, $prenom, $email, $centre, $ID_Role, $promotion_assignees)
     {
         $this->connexion();
-        $stmt = $this->_connexion->prepare("INSERT INTO authentification (login, mdp) VALUES (?, ?) INSERT INTO user (nom, prenom, email, centre, ID_Role, id_auth) VALUES (?, ?, ?, ?, ?, ?) INSERT INTO pilote (promotion_assignees, id_user) VALUES (?, ?);");
-        $stmt->bindValue(1, $identifiant, PDO::PARAM_STR); //Identifiant
-        $stmt->bindValue(2, $mdp, PDO::PARAM_STR); //MDP
-        $stmt->bindValue(3, $nom, PDO::PARAM_STR); //Nom
-        $stmt->bindValue(4, $prenom, PDO::PARAM_INT); //Prenom
-        $stmt->bindValue(5, $email, PDO::PARAM_INT); //Email
-        $stmt->bindValue(6, $centre, PDO::PARAM_INT); //Centre
-        $stmt->bindValue(7, $ID_Role, PDO::PARAM_INT); //ID_Role
-        $stmt->bindValue(8, $id_auth, PDO::PARAM_INT); //ID_auth
-        $stmt->bindValue(9, $promotion_assignees, PDO::PARAM_STR); //Promotion_assignées
-        $stmt->bindValue(10, $id_user, PDO::PARAM_INT); //ID_user
+        $stmt = $this->_connexion->prepare('INSERT INTO projet.authentification (login, mdp) VALUES (
+            ' . $this->_connexion->quote($identifiant) . ', 
+            ' . $this->_connexion->quote($mdp) . '); 
+            INSERT INTO projet.user (nom, prenom, email, centre, ID_Role, id_auth) VALUES (
+                ' . $this->_connexion->quote($nom) . ', 
+                ' . $this->_connexion->quote($prenom) . ', 
+                ' . $this->_connexion->quote($email) . ', 
+                ' . $this->_connexion->quote($centre) . ', 
+                ' . $this->_connexion->quote($ID_Role) . ', 
+                (SELECT id_auth FROM authentification WHERE login = 
+                ' . $this->_connexion->quote($identifiant) . '
+            )); INSERT INTO projet.pilote (promotion_assignees, id_user) VALUES (
+                ' . $this->_connexion->quote($promotion_assignees) . '
+                , (SELECT id_user FROM user WHERE email = 
+                ' . $this->_connexion->quote($email) . '));');
+
         return $stmt->execute();
     }
 

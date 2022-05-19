@@ -12,5 +12,3 @@ if($creater_offre)
 else{
     echo "La création d'offre à échouée";
 }
-
-?>

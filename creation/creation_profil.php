@@ -9,47 +9,131 @@ if (@$_SESSION['auth'] == true) {
     <main>
         <div class="container">
             <div class="row">
-                <form action="" method="post" class="text-center">
+                <form action="../creation/crea_profil.php" method="post" class="text-center">
                     <fieldset>
                         <legend>Création d'un profil</legend>
-
                         <div class="row">
-                            <div class="col-2"><input type="radio" name="compte" value="2" required /></div>
-                            <div class="col-2"><label for="Pilote">Pilote</label></div>
-
-                            <div class="col-2"><input type="radio" name="compte" value="4" required /></div>
-                            <div class="col-2"><label for="Eleve">Eleve</label></div>
-
-                            <div class="col-2"><input type="radio" name="compte" value="3" required /></div>
-                            <div class="col-2"><label for="Delegue">Delegue</label></div>
-
-
-                            <div class="col-6"><label for="Login">Login</label></div>
-                            <div class="col-6"><input type="text" name="Login" placeholder="Saisissez un login" required /></div>
-
-                            <div class="col-6"><label for="Mdp">Mot de passe</label></div>
-                            <div class="col-6"><input type="text" name="Mdp" placeholder="Saisissez un mot de passe" required /></div>
-
-                            <div class="col-6"><label for="Nom">Nom</label></div>
-                            <div class="col-6"><input type="text" name="Nom" placeholder="Saisissez un nom" required /></div>
-
-                            <div class="col-6"><label for="Prenom">Prenom</label></div>
-                            <div class="col-6"><input type="text" name="Prenom" placeholder="Saisissez un prenom" required /></div>
-
-                            <div class="col-6"><label for="Email">Email</label></div>
-                            <div class="col-6"><input type="email" name="Email" placeholder="Saisissez un email" required /></div>
-
-                            <div class="col-6"><label for="Centre">Centre</label></div>
-                            <div class="col-6"><input type="text" name="Centre" placeholder="Saississez votre centre" required /></div>
-
-                            <div class="col-6"><label for="Promotion">Promotion</label></div>
-                            <div class="col-6"><input type="text" name="Promotion" placeholder="Saississez votre promotion" required /></div>
-
-                            <div class="col-3"></div>
-                            <div class="col-3"><input type="submit" value="Envoyer" id="envoyer" ></div>
-                            <div class="col-3"><input type="reset" value="Annuler" /></div>
-                            <div class="col-3">
-                            </div>
+                            <form action="" method="post" action="../creation/crea_offre.php">
+                                <table>
+                                    <tr>
+                                        <div class="col-2"><label for="Pilote">Pilote</label></div>
+                                        <div class="col-2"><input type="radio" id="Pilote" name="Role" value="2" required /></div>
+                                        <div class="col-2"><label for="Eleve">Eleve</label></div>
+                                        <div class="col-2"><input type="radio" id="Eleve" name="Role" value="4" required /></div>
+                                        <div class="col-2"><label for="Delegue">Delegue</label></div>
+                                        <div class="col-2"><input type="radio" id="Delegue" name="Role" value="3" required /></div>
+                                    </tr>
+                                    <div style="padding-left:200px">
+                                        <tr>
+                                            <td>
+                                                <div class="col-6"><label for="Login">Login</label></div>
+                                            </td>
+                                            <td>
+                                                <div class="col-6"><input type="text" name="Login" placeholder="Saisissez un login" required /></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-6"><label for="Mdp">Mot de passe</label></div>
+                                            </td>
+                                            <td>
+                                                <div class="col-6"><input type="password" name="Mdp" placeholder="Saisissez un mot de passe" required /></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-6"><label for="Nom">Nom</label></div>
+                                            </td>
+                                            <td>
+                                                <div class="col-6"><input type="text" name="Nom" placeholder="Saisissez un nom" required /></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-6"><label for="Prenom">Prenom</label></div>
+                                            </td>
+                                            <td>
+                                                <div class="col-6"><input type="text" name="Prenom" placeholder="Saisissez un prenom" required /></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-6"><label for="Email">Email</label></div>
+                                            </td>
+                                            <td>
+                                                <div class="col-6"><input type="email" name="Email" placeholder="Saisissez un email" required /></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-6"><label for="Centre">Centre</label></div>
+                                            </td>
+                                            <td> <select name="Centre" required class="col-6">
+                                                    <option value="">Saississez votre Centre</option>
+                                                    <option value="Aix-en-Provence">Aix-en-Provence</option>
+                                                    <option value="Angoulême">Angoulême</option>
+                                                    <option value="Arras">Arras</option>
+                                                    <option value="Bordeaux">Bordeaux</option>
+                                                    <option value="Brest">Brest</option>
+                                                    <option value="Caen">Caen</option>
+                                                    <option value="Dijon">Dijon</option>
+                                                    <option value="Grenoble">Grenoble</option>
+                                                    <option value="Rochelle">La Rochelle</option>
+                                                    <option value="Le Mans">Le Mans</option>
+                                                    <option value="Lille">Lille</option>
+                                                    <option value="Lyon">Lyon</option>
+                                                    <option value="Montpellier">Montpellier</option>
+                                                    <option value="Nancy">Nancy</option>
+                                                    <option value="Nantes">Nantes</option>
+                                                    <option value="Nice">Nice</option>
+                                                    <option value="Orléans">Orléans</option>
+                                                    <option value="Paris Nanterre">Paris Nanterre</option>
+                                                    <option value="Pau">Pau</option>
+                                                    <option value="Reims">Reims</option>
+                                                    <option value="Rouen">Rouen</option>
+                                                    <option value="Saint-Nazaire">Saint-Nazaire</option>
+                                                    <option value="Strasbourg">Strasbourg</option>
+                                                    <option value="Toulouse">Toulouse</option>
+                                                </select></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-6"><label for="Promotion">Promotion</label></div>
+                                            </td>
+                                            <td>
+                                                <select name="Promotion" required="required">
+                                                    <option value="">Saississez votre Promotion</option>
+                                                    <option value="CPIA1">CPI A1</option>
+                                                    <option value="CPIA2-INFORMATIQUE">CPIA2-INFORMATIQUE</option>
+                                                    <option value="CPIA2-SYSTEME EMBARQUÉ">CPIA2-SYSTEME EMBARQUÉ</option>
+                                                    <option value="CPIA2-BTP">CPIA2-BTP</option>
+                                                    <option value="CPIA2-GENERALISTE">CPIA2-GENERALISTE</option>
+                                                    <option value="A3-INFORMATIQUE">A3-INFORMATIQUE</option>
+                                                    <option value="A3-SYSTEME EMBARQUÉ">A3-SYSTEME EMBARQUÉ</option>
+                                                    <option value="A3-BTP">A3-BTP </option>
+                                                    <option value="A3-GENERALISTE">A3-GENERALISTE </option>
+                                                    <option value="A4-INFORMATIQUE">A4-INFORMATIQUE </option>
+                                                    <option value="A4-SYSTEME EMBARQUÉ">A4-SYSTEME EMBARQUÉ </option>
+                                                    <option value="A4-BTP">A4-BTP </option>
+                                                    <option value="A4-GENERALISTE">A4-GENERALISTE </option>
+                                                    <option value="A5-INFORMATIQUE">A5-INFORMATIQUE </option>
+                                                    <option value="A5-SYSTEME EMBARQUÉ">A5-SYSTEME EMBARQUÉ </option>
+                                                    <option value="A5-BTP">A5-BTP </option>
+                                                    <option value="A5-GENERALISTE">A5-GENERALISTE </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-6"><input type="submit" value="Envoyer" id="envoyer"></div>
+                                            </td>
+                                            <td>
+                                                <div class="col-6"><input type="reset" value="Annuler" /></div>
+                                            </td>
+                                        </tr>
+                                    </div>
+                                </table>
+                            </form>
                         </div>
                     </fieldset>
                 </form>
