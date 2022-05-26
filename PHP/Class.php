@@ -1,6 +1,5 @@
+
 <?php
-
-
 
 // #########################  Connexion ##########################
 
@@ -12,6 +11,21 @@ function ConnectBDD()
     } catch (PDOException $e) {
         echo $e->getMessage() . "\n";
         die;
+    }
+}
+
+
+
+if (@$_POST['GetProfile'] == true && isset($_POST['name'])) {
+    $bdd = ConnectBDD();
+
+    $Nom = $_POST['name'];
+    $reqt = "SELECT * FROM user WHERE id_auth = (SELECT id_auth FROM authentification WHERE login =" . $bdd->quote($Nom) . ")";
+    $result = $bdd->query($reqt);
+    $ProfileResult = $result->fetchAll();
+
+    foreach ($ProfileResult as $Profile) {
+        echo ("<p>" . $Profile['prenom'] . " / " . $Profile['nom'] . " / " . $Profile['email'] . " / " . $Profile['centre'] . "</p>");
     }
 }
 
