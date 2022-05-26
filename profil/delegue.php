@@ -4,6 +4,7 @@ if (@$_SESSION['auth'] == true) {
     include '../base/head.php';
     echo '<link rel="stylesheet" href="profils.css">';
     include '../base/header.php';
+    require '../PHP/Class.php';
 ?>
 
     <main>
@@ -19,27 +20,22 @@ if (@$_SESSION['auth'] == true) {
                             <br>
                             <div class="row" style="margin-top:50px;">
                                 <div class="col-sm-1">Prénom</div>
-                                <div class="col-sm-11"><input type="prenom" class="col-sm-6" disabled="disabled" placeholder="Prenom" id="prenom" required /></div>
+                                <div class="col-sm-11"><input type="text" class="col-sm-6" disabled="disabled" id="prenom" required value="<?= $_SESSION['user']['prenom'] ?>" /></div>
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-sm-1">Nom</div>
-                                <div class="col-sm-11"><input type="Nom" class="col-sm-6" disabled="disabled" placeholder="Nom" id="nom" required /></div>
+                                <div class="col-sm-11"><input type="text" class="col-sm-6" disabled="disabled" placeholder="Nom" id="nom" required value="<?= $_SESSION['user']['nom'] ?>" /></div>
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-sm-1">Email</div>
-                                <div class="col-sm-11"><input type="Email" class="col-sm-6" disabled="disabled" placeholder="Email" id="email" required /></div>
+                                <div class="col-sm-11"><input type="email" class="col-sm-6" disabled="disabled" placeholder="Email" id="email" required value="<?= $_SESSION['user']['email'] ?>" /></div>
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col-sm-1">Etablissement</div>
-                                <div class="col-sm-11"><input type="Etablissement" class="col-sm-6" disabled="disabled" placeholder="Etablissement" id="etablisement" required /></div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-sm-1">Promotion</div>
-                                <div class="col-sm-11"><input type="Promotion" class="col-sm-6" disabled="disabled" placeholder="Promotion" id="promotion" required /></div>
+                                <div class="col-sm-1">Centre</div>
+                                <div class="col-sm-11"><input type="text" class="col-sm-6" disabled="disabled" placeholder="Centre" id="centre" required value="<?= $_SESSION['user']['centre'] ?>" /></div>
                             </div>
                             <br>
                         </div>

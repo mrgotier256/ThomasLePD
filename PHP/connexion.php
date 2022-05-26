@@ -8,11 +8,14 @@ if(count($verif)>0)
 {
     $_SESSION['auth']=true;
     $_SESSION['user']['ID_Role']=$verif[0]['ID_Role'];
+    $_SESSION['user']['nom']=$verif[0]['nom'];
+    $_SESSION['user']['prenom']=$verif[0]['prenom'];
+    $_SESSION['user']['email']=$verif[0]['email'];
+    $_SESSION['user']['centre']=$verif[0]['centre'];
+
     header("Location:../mainpage/mainPage.php");
     exit;
 }
 else{
     echo "L'identifiant ou le mot de passe est incorrect";
 }
-
-?>

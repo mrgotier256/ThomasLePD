@@ -18,7 +18,7 @@ require '../PHP/Class.php';
                             <option value="">Entreprise</option>
                             <?php
                             $NomEntreprises = new Entreprise;
-                            foreach ($NomEntreprises->getEntreprise() as $NomEntreprise) {
+                            foreach ($NomEntreprises->getEntrepriseSansLimite() as $NomEntreprise) {
                             ?>
                                 <option value="<?= $NomEntreprise['Nom'] ?>"><?= $NomEntreprise['Nom'] ?></option>
                             <?php

@@ -107,17 +107,20 @@ class Offre
         return $utilisateur->fetchAll();
     }
 
-    public function addOffre($competence, $localite, $entreprise, $duree, $remuneration, $date_offre, $id_fiche)
+    public function addOffre($competence, $localite, $duree, $remuneration, $date_offre, $id_fiche)
     {
         $this->connexion();
-        $stmt = $this->_connexion->prepare("INSERT INTO projet.offre_de_stage (competences, localite, entreprise, duree, remuneration, date_offre, id_fiche) VALUES (?, ?, ?, ?, ?, ?, ?);");
-        $stmt->bindValue(1, $competence, PDO::PARAM_STR);
-        $stmt->bindValue(2, $localite, PDO::PARAM_STR);
-        $stmt->bindValue(3, $entreprise, PDO::PARAM_STR);
-        $stmt->bindValue(4, $duree, PDO::PARAM_INT);
-        $stmt->bindValue(5, $remuneration, PDO::PARAM_INT);
-        $stmt->bindValue(6, $date_offre, PDO::PARAM_STR);
-        $stmt->bindValue(7, $id_fiche, PDO::PARAM_INT);
+        $stmt = $this->_connexion->prepare("INSERT INTO projet.offre_de_stage 
+        (competences, localite, entreprise, duree, remuneration, id_fiche, date_offre) 
+        VALUES (
+            " . $this->_connexion->quote($competence) . ", 
+        " . $this->_connexion->quote($localite) . ", 
+        (SELECT Nom FROM `fiche_entreprise` WHERE id_fiche = " . $this->_connexion->quote($id_fiche) . "), 
+        " . $this->_connexion->quote($duree) . ", 
+        " . $this->_connexion->quote($remuneration) . ", 
+        " . $this->_connexion->quote($id_fiche) . "
+        , " . $this->_connexion->quote($date_offre) . ")");
+        var_dump($stmt);
         return $stmt->execute();
     }
 
@@ -210,6 +213,14 @@ class Entreprise
         $utilisateur = $this->_connexion->query("SELECT * FROM fiche_entreprise LIMIT $offset,10");
         return $utilisateur->fetchAll();
     }
+
+    public function getEntrepriseSansLimite()
+    {
+        $this->connexion();
+        $utilisateur = $this->_connexion->query("SELECT * FROM fiche_entreprise");
+        return $utilisateur->fetchAll();
+    }
+
 
     public function getEntreprisebyID($id)
     {
@@ -310,15 +321,25 @@ class Eleve
                 ' . $this->_connexion->quote($promotion) . '
                 , (SELECT id_user FROM user WHERE email = 
                 ' . $this->_connexion->quote($email) . '));');
-        var_dump($stmt);
         return $stmt->execute();
     }
 
-    public function delEleve()
+    public function delEleve($identifiant)
     {
         $this->connexion();
-        $utilisateur = $this->_connexion->query("");
-        return $utilisateur->fetch();
+        $stmt = $this->_connexion->prepare('SET @IdAuth = (SELECT id_auth FROM authentification 
+        WHERE login = ' . $this->_connexion->quote($identifiant) . ');
+        SET @IdUti = (SELECT id_user FROM user WHERE id_auth = @IdAuth);
+        SET @idEtu =(SELECT id_eleve FROM eleve WHERE id_user = @IdUti);
+        
+        SET @Wish = (SELECT ID FROM wishlist WHERE id_eleve = @idEtu);
+        DELETE FROM relation_wishlist_avec_stage WHERE ID = @Wish;
+        DELETE FROM wishlist  WHERE id_eleve = @idEtu;
+        
+        DELETE FROM eleve WHERE id_eleve = @idEtu;
+        DELETE FROM user WHERE id_user = @IdUti;
+        DELETE FROM authentification WHERE id_auth = @IdAuth;');
+        return $stmt->execute();
     }
 
     public function UpEleve()
@@ -391,11 +412,17 @@ class Delegue
         return $stmt->execute();
     }
 
-    public function delDelegue()
+    public function delDelegue($identifiant)
     {
         $this->connexion();
-        $utilisateur = $this->_connexion->query("");
-        return $utilisateur->fetch();
+        $stmt = $this->_connexion->prepare('
+        SET @IdAuth = (SELECT id_auth FROM authentification WHERE login = 
+        ' . $this->_connexion->quote($identifiant) . ');
+        SET @IdUti = (SELECT id_user FROM user WHERE id_auth = @IdAuth);
+        
+        DELETE FROM user WHERE id_user = @IdUti AND ID_Role = 3;
+        DELETE FROM authentification WHERE id_auth = @IdAuth;');
+        return $stmt->execute();
     }
 
     public function UpDelegue()
@@ -475,11 +502,18 @@ class Pilote
         return $stmt->fetchAll();
     }
 
-    public function delPilote()
+    public function delPilote($identifiant)
     {
         $this->connexion();
-        $utilisateur = $this->_connexion->query("");
-        return $utilisateur->fetch();
+        $stmt = $this->_connexion->prepare('SET @IdAuth = (SELECT id_auth FROM authentification 
+        WHERE login = ' . $this->_connexion->quote($identifiant) . ');
+        SET @IdUti = (SELECT id_user FROM user WHERE id_auth = @IdAuth);
+        SET @idProf =(SELECT id_pilote FROM pilote WHERE id_user = @IdUti);
+        
+        DELETE FROM pilote WHERE id_pilote = @idProf;
+        DELETE FROM user WHERE id_user = @IdUti;
+        DELETE FROM authentification WHERE id_auth = @IdAuth;');
+        return $stmt->execute();
     }
 
     public function UpPilote()

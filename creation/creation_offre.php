@@ -2,6 +2,7 @@
 session_start();
 if (@$_SESSION['auth'] == true) {
     include '../base/head.php';
+    require '../PHP/Class.php';
     echo '<link rel="stylesheet" href="creation.css">';
     include '../base/header.php';
 ?>
@@ -20,25 +21,34 @@ if (@$_SESSION['auth'] == true) {
                             <div class="col-6"><label for="loca">Localité</label></div>
                             <div class="col-6"><input type="text" name="loca" placeholder="Saisissez une localité" required /></div>
 
-                            <div class="col-6"><label for="ent">Entreprise</label></div>
-                            <div class="col-6"><input type="text" name="ent" placeholder="Saisissez le nom de l'entreprise" required /></div>
+                            <div class="col-6"><label for="ID_ent">Entreprise</label></div>
+                            <select name="ID_ent" style="width:165px;">
+                                <option value="">Entreprise</option>
+                                <?php
+                                $NomEntreprises = new Entreprise;
+                                foreach ($NomEntreprises->getEntrepriseSansLimite() as $NomEntreprise) {
+                                ?>
+                                    <option value="<?= $NomEntreprise['id_fiche'] ?>"><?= $NomEntreprise['Nom'] ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
 
-                            <div class="col-6"><label for="dur">Durée</label></div>
-                            <div class="col-6"><input type="text" name="dur" placeholder="Saisissez une durée" required /></div>
+                            <div class="col-6"><label for="dur">Durée (en semaine)</label></div>
+                            <div class="col-6"><input type="number" name="dur" placeholder="Saisissez une durée" required /></div>
 
                             <div class="col-6"><label for="em">Date d'emission</label></div>
-                            <div class="col-6"><input type="date" name="em" placeholder="Saisissez la date d'émission" required /></div>
+                            <div class="col-6"><input type="date" name="em" placeholder=" chiasse" required /></div>
 
                             <div class="col-6"><label for="remu">Rémunération</label></div>
-                            <div class="col-6"><input type="text" name="remu" placeholder="Saisissez la rémunération proposée" required /></div>
+                            <div class="col-6"><input type="number" name="remu" placeholder="Saisissez la rémunération proposée" required /></div>
 
-                            <div class="col-6"><label for="ID_ent">ID de l'Entreprise</label></div>
-                            <div class="col-6"><input type="number" name="ID_ent" placeholder="Saississez l'ID de l'entreprise" required /></div>
 
-                            <div class="col-3"></div>
-                            <div class="col-3"><input type="submit" value="Envoyer" id="envoyer"></div>
-                            <div class="col-3"><input type="reset" value="Annuler" /></div>
-                            <div class="col-3">
+                            <div>
+                                <div class="col-3"></div>
+                                <div class="col-3"><input type="submit" value="Envoyer" id="envoyer"></div>
+                                <div class="col-3"><input type="reset" value="Annuler" /></div>
+                                <div class="col-3"></div>
                             </div>
                         </div>
                     </fieldset>
