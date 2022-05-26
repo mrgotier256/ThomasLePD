@@ -5,13 +5,25 @@ if (@$_SESSION['auth'] == true) {
     echo '<link rel="stylesheet" href="creation.css">';
     include '../base/header.php';
 ?>
+    <!DOCTYPE html>
+    <html lang="en">
 
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styleindex.css">
+        <title>Document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="../PHP/script.js" type="text/javascript"></script>
+
+    </head>
     <main>
         <div class="container">
             <div class="row">
                 <form action="../delete/del_profil.php" method="post" class="text-center">
                     <fieldset>
-                        <legend>Création d'un profil</legend>
+                        <legend>Suppression d'un profil</legend>
                         <div class="row">
                             <table>
                                 <tr>
@@ -28,7 +40,7 @@ if (@$_SESSION['auth'] == true) {
                                             <div class="col-6"><label for="Login">Login</label></div>
                                         </td>
                                         <td>
-                                            <div class="col-6"><input type="text" name="Login" placeholder="Saisissez un login" required /></div>
+                                            <div class="col-8"><input type="text" name="Login" placeholder="Saisissez un login" id="name" onkeyup="GetProfile()" required /></div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -37,6 +49,11 @@ if (@$_SESSION['auth'] == true) {
                                         </td>
                                         <td>
                                             <div class="col-6"><input type="reset" value="Annuler" /></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div id="resultTyping"> </div>
                                         </td>
                                     </tr>
                                 </div>
