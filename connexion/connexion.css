@@ -1,52 +1,17 @@
-html,
-body {
-    padding: 0;
-    color: white;
-    height: 100%;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-@media screen and (max-width:470px) {
-
-    html,
-    body {
-        padding: 0;
-        color: white;
-        height: 100%;
-        font-family: 'Times New Roman', Times, serif;
-        background-color: #c5a7a1;
-    }
-}
-
-main {
-    background-color: #c5a7a1;
-    height: 85%;
-    padding: 0;
-    padding-top: 60px;
-    text-align: center;
-}
-
-
-
-footer {
-    background-color: #2b241f;
-    color: azure;
-    height: 15%
-}
-
-.pad {
-    padding-top: 1px
-}
-
-a {
+section {
+    height: 535px;
+    overflow: auto;
+    background-color: grey;
+    border: 2px solid black;
+    border-radius: 20px;
     color: white;
 }
 
 fieldset {
     width: 50%;
     margin: auto;
-    background-color: #6d5d5d;
-    border: 2px solid whitesmoke;
+    background-color: grey;
+    border: 2px solid black;
     border-radius: 20px;
     padding: 3px;
 }
@@ -57,7 +22,131 @@ fieldset {
     }
 }
 
+div>input {
+    margin: 3px;
+    width: 95%;
+}
+
+article {
+    height: 535px;
+    overflow: auto;
+    background-color: grey;
+    border: 2px solid black;
+    border-radius: 20px;
+    color: white;
+}
+
+#mainCarousel {
+    width: 75%;
+    margin: auto;
+    border: 2px solid black;
+}
+
+html,
+body {
+    padding: 0;
+    height: 100%;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+main {
+    background-color: whitesmoke;
+    padding: 0;
+    padding-top: 60px;
+}
+
+footer {
+    background-color: #2b241f;
+    color: azure;
+}
+
+.pad {
+    padding-top: 1px
+}
+
 footer a {
     padding: 0 5px;
     color: blanchedalmond;
+}
+
+.bdd {
+    background-color: slategray;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 4px;
+    margin: 5px;
+}
+
+.joie {
+    text-decoration: none;
+    color: black;
+}
+
+.decol {
+    color: rgb(255, 255, 255);
+    background-color: darkgrey;
+    border: 2px black solid;
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+}
+
+.deco {
+    color: rgb(255, 255, 255);
+    background-color: darkred;
+    border: 2px black solid;
+    padding: 4px;
+}
+
+.etudiant {
+    padding: 17px;
+    background-color: #ffd000;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    margin: 5px;
+    color: black;
+}
+
+.pilote {
+    padding: 17px;
+    background-color: #fb542f;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    margin: 5px;
+    color: black;
+}
+
+.entreprise {
+    padding: 17px;
+    background-color: #006aff;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    margin: 5px;
+    color: black;
+}
+
+.offre {
+    padding: 17px;
+    background-color: #0a9602;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    margin: 5px;
+    color: black;
+}
+
+.delegue {
+    padding: 17px;
+    background-color: #9f0087;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    margin: 5px;
+    color: black;
+}
+
+.bout {
+    height: 10%;
 }
