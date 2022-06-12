@@ -52,16 +52,6 @@ include '../base/header.php';
     <div class="text-center" style="width:76%;margin:auto;">
         <section>
             <h5><strong>Offres de stage</strong></h5>
-            <table>
-                <tr>
-                    <th scope="col-2" class="decol">Localité</th>
-                    <th scope="col-2" class="decol">Entreprise</th>
-                    <th scope="col-2" class="decol">Compétences</th>
-                    <th scope="col-2" class="decol">Durée</th>
-                    <th scope="col-2" class="decol">Rémunération</th>
-                    <th scope="col-2" class="decol">Date de création de l'offre</th>
-                </tr>
-            </table>
             <?php require '../PHP/Class.php';
 
             $users = new Offre();
