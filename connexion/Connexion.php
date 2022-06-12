@@ -9,7 +9,7 @@ include '../Base/header.php';
         <fieldset>
             <legend>Connexion</legend>
             <div class="container">
-                <div class="row"><label class="col-6">Email</label>
+                <div class="row"><label class="col-6">Identifiant</label>
                     <input type="text" class="col-6" placeholder="Entrez votre Login" id="login" name="login" required />
                 </div>
                 <div class="row"><label class="col-6">Mot de passe</label>

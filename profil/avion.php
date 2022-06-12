@@ -21,22 +21,22 @@ if (@$_SESSION['auth'] == true) {
                             <br>
                             <div class="row" style="margin-top:50px;">
                                 <div class="col-sm-3">Prénom</div>
-                                <div class="col-sm-8"><input type="text" class="col-sm-6" disabled="disabled" id="prenom" required value="<?= $_SESSION['user']['prenom'] ?>" /></div>
+                                <div class="col-sm-8"><input type="text" class="col-sm-6" disabled="disabled" id="prenom" required value="<?= $detail['prenom'] ?>" /></div>
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-sm-3">Nom</div>
-                                <div class="col-sm-8"><input type="text" class="col-sm-6" disabled="disabled" placeholder="Nom" id="nom" required value="<?= $_SESSION['user']['nom'] ?>" /></div>
+                                <div class="col-sm-8"><input type="text" class="col-sm-6" disabled="disabled" placeholder="Nom" id="nom" required value="<?= $detail['nom'] ?>" /></div>
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-sm-3">Centre</div>
-                                <div class="col-sm-11"><input type="email" class="col-sm-6" disabled="disabled" placeholder="Email" id="email" required value="<?= $_SESSION['user']['email'] ?>" /></div>
+                                <div class="col-sm-11"><input type="email" class="col-sm-6" disabled="disabled" placeholder="Email" id="email" required value="<?= $detail['email'] ?>" /></div>
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-sm-3">Email</div>
-                                <div class="col-sm-11"><input type="text" class="col-sm-6" disabled="disabled" placeholder="Centre" id="centre" required value="<?= $_SESSION['user']['centre'] ?>" /></div>
+                                <div class="col-sm-11"><input type="text" class="col-sm-6" disabled="disabled" placeholder="Centre" id="centre" required value="<?= $detail['centre'] ?>" /></div>
                             </div>
                             <br>
                         </div>

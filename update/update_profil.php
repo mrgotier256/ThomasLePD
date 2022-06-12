@@ -19,9 +19,9 @@ if (@$_SESSION['auth'] == true) {
     <main>
         <div class="container">
             <div class="row">
-                <form action="../creation/crea_profil.php" method="post" class="text-center">
+                <form action="../update/upd_profil.php" method="post" class="text-center">
                     <fieldset>
-                        <legend>Création d'un profil</legend>
+                        <legend>Mise a jour d'un profil</legend>
                         <div class="row">
                             <table>
                                 <tr>
@@ -43,18 +43,10 @@ if (@$_SESSION['auth'] == true) {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="col-6"><label for="Mdp">Mot de passe</label></div>
-                                        </td>
-                                        <td>
-                                            <div class="col-6"><input type="password" name="Mdp" placeholder="Saisissez un mot de passe" required /></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
                                             <div class="col-6"><label for="Nom">Nom</label></div>
                                         </td>
                                         <td>
-                                            <div class="col-6"><input type="text" name="Nom" placeholder="Saisissez un nom" required /></div>
+                                            <div class="col-6"><input type="text" name="Nom" placeholder="Saisissez un nom" /></div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -62,7 +54,7 @@ if (@$_SESSION['auth'] == true) {
                                             <div class="col-6"><label for="Prenom">Prenom</label></div>
                                         </td>
                                         <td>
-                                            <div class="col-6"><input type="text" name="Prenom" placeholder="Saisissez un prenom" required /></div>
+                                            <div class="col-6"><input type="text" name="Prenom" placeholder="Saisissez un prenom" /></div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -70,14 +62,14 @@ if (@$_SESSION['auth'] == true) {
                                             <div class="col-6"><label for="Email">Email</label></div>
                                         </td>
                                         <td>
-                                            <div class="col-6"><input type="email" name="Email" placeholder="Saisissez un email" required /></div>
+                                            <div class="col-6"><input type="email" name="Email" placeholder="Saisissez un email" /></div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <div class="col-6"><label for="Centre">Centre</label></div>
                                         </td>
-                                        <td> <select name="Centre" required class="col-6">
+                                        <td> <select name="Centre" class="col-6">
                                                 <option value="">Saississez votre Centre</option>
                                                 <option value="Aix-en-Provence">Aix-en-Provence</option>
                                                 <option value="Angoulême">Angoulême</option>
@@ -110,7 +102,7 @@ if (@$_SESSION['auth'] == true) {
                                             <div class="col-6"><label for="Promotion">Promotion</label></div>
                                         </td>
                                         <td>
-                                            <select name="Promotion" required="required">
+                                            <select name="Promotion">
                                                 <option value="">Saississez votre Promotion</option>
                                                 <option value="CPIA1">CPI A1</option>
                                                 <option value="CPIA2-INFORMATIQUE">CPIA2-INFORMATIQUE</option>
@@ -180,7 +172,6 @@ if (@$_SESSION['auth'] == true) {
             </div>
         </div>
     </main>
-
 <?php
     include '../base/footer.php';
 } else {

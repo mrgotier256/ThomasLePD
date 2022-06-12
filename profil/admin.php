@@ -62,10 +62,13 @@ if (@$_SESSION['auth'] == true) {
                 <br></br>
                 <a href="../creation/creation_profil.php">Création d'un profil</a>
                 <br></br>
+                <a href="../update/update_profil.php">Modification du profil</a>
+                <br></br>
                 <a href="../creation/creation_entreprise.php">Création d'une entreprise</a>
                 <br></br>
                 <a href="../creation/creation_offre.php">Création d'une offre</a>
                 <br></br>
+
                 <div>
                     <a class="deco" href="../deco/deconnexion.php">Deconnexion</a>
                 </div>

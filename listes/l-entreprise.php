@@ -24,7 +24,7 @@ if (@$_SESSION['auth'] == true) {
                         foreach ($users->getEntreprise($page * 10) as $user) {
                             $lien_entreprise = "";
                             $lien_entreprise = $user['Nom'] . " " . "|" . " " . $user['Secteur_activite'] . " " . "|" . " " . $user['Localite'] . " " . "|" . " " . $user['Nb_stagiaire_cesi'] . " " . " stagiaire(s) " . " " . "|" . " " . $user['evaluation_stagiaire'] . "/5" . " |" . " " . $user['confiance_pilote'] . "/5";
-                            echo "<div class=\"bdd\"><a class=\"joie\" href = '../profil/entreprise.php?idFiche=" . $user['id_fiche'] . "'><b>" . $lien_entreprise . "</b></a></div>";
+                            echo "<div class=\"bdd\"><a class=\"joie\" href = '../profil/entreprise.php?idFiche=" . $user['id_fiche'] . "&&Nom=" . $user['Nom'] . "'><b>" . $lien_entreprise . "</b></a></div>";
                         }
                         $users->getEntreprise();
 

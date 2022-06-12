@@ -20,7 +20,7 @@ if (@$_POST['GetProfile'] == true && isset($_POST['name'])) {
     $bdd = ConnectBDD();
 
     $Nom = $_POST['name'];
-    $reqt = "SELECT * FROM user WHERE id_auth = (SELECT id_auth FROM authentification WHERE login =" . $bdd->quote($Nom) . ")";
+    $reqt = "SELECT * FROM user WHERE id_auth = (SELECT id_auth FROM authentification WHERE login =" . $this->_connexion->quote($Nom) . ")";
     $result = $bdd->query($reqt);
     $ProfileResult = $result->fetchAll();
 
@@ -356,10 +356,68 @@ class Eleve
         return $stmt->execute();
     }
 
-    public function UpEleve()
+    public function UpEleve($identifiant, $nom, $prenom, $email, $centre, $ID_Role, $promotion)
     {
         $this->connexion();
-        $utilisateur = $this->_connexion->query("");
+        if (empty($prenom) && empty($nom) && empty($Promotion) && empty($centre) && empty($email)) {
+            header('Location: ../update/update_profil.php');
+        }
+
+        $reqtpromo = "";
+
+        if (empty($prenom)) {
+            $U_Prenom = "";
+            $prenom = "";
+        } else {
+            $U_Prenom = 'prenom =';
+            $prenom = $this->_connexion->quote($prenom) . ',';
+        }
+
+        if (empty($nom)) {
+            $U_Nom = "";
+            $nom = "";
+        } else {
+            $U_Nom = 'nom =';
+            $nom = $this->_connexion->quote($nom) . ',';
+        }
+
+        if (empty($promotion)) {
+            $reqtpromo = "";
+            $U_Email = "";
+            $promotion = "";
+        } else {
+            $promotion = $this->_connexion->quote($promotion);
+            $reqtpromo = "UPDATE eleve SET Promotion = " . $promotion . " WHERE id_user = @idUser;";
+        }
+
+        if (empty($centre)) {
+            $U_centre = "";
+            $centre = "";
+        } else {
+            $U_centre = 'centre =';
+            $centre = $this->_connexion->quote($centre) . ',';
+        }
+
+        if (empty($email)) {
+            $U_Email = "";
+            $email = "";
+        } else {
+            $U_Email = 'email =';
+            $email = $this->_connexion->quote($email) . ',';
+        }
+
+
+        $utilisateur = $this->_connexion->query("
+        SET @IdAuth = (SELECT id_auth FROM authentification 
+        WHERE login = " . $this->_connexion->quote($identifiant) . ");
+        SET @idUser = (SELECT id_user FROM user WHERE id_auth = @IdAuth);
+
+        " . $reqtpromo . "
+
+        UPDATE user SET " . $U_Nom . " " . $nom . " " . $U_Prenom . " " . $prenom . " 
+        " . $U_Email . " " . $email . " " . $U_centre . " " . $centre . " id_user = @idUser
+        WHERE id_user = @idUser and ID_Role = " . $ID_Role . ";");
+
         return $utilisateur->fetch();
     }
 
@@ -439,10 +497,55 @@ class Delegue
         return $stmt->execute();
     }
 
-    public function UpDelegue()
+    public function UpDelegue($identifiant, $nom, $prenom, $email, $centre, $ID_Role)
     {
         $this->connexion();
-        $utilisateur = $this->_connexion->query("");
+        if (empty($prenom) && empty($nom) && empty($centre) && empty($email)) {
+            header('Location: ../update/update_profil.php');
+        }
+
+        if (empty($prenom)) {
+            $U_Prenom = "";
+            $prenom = "";
+        } else {
+            $U_Prenom = 'prenom =';
+            $prenom = $this->_connexion->quote($prenom) . ',';
+        }
+
+        if (empty($nom)) {
+            $U_Nom = "";
+            $nom = "";
+        } else {
+            $U_Nom = 'nom =';
+            $nom = $this->_connexion->quote($nom) . ',';
+        }
+
+        if (empty($centre)) {
+            $U_centre = "";
+            $centre = "";
+        } else {
+            $U_centre = 'centre =';
+            $centre = $this->_connexion->quote($centre) . ',';
+        }
+
+        if (empty($email)) {
+            $U_Email = "";
+            $email = "";
+        } else {
+            $U_Email = 'email =';
+            $email = $this->_connexion->quote($email) . ',';
+        }
+
+
+        $utilisateur = $this->_connexion->query("
+        SET @IdAuth = (SELECT id_auth FROM authentification 
+        WHERE login = " . $this->_connexion->quote($identifiant) . ");
+        SET @idUser = (SELECT id_user FROM user WHERE id_auth = @IdAuth);
+
+        UPDATE user SET " . $U_Nom . " " . $nom . " " . $U_Prenom . " " . $prenom . " 
+        " . $U_Email . " " . $email . " " . $U_centre . " " . $centre . " id_user = @idUser
+        WHERE id_user = @idUser and ID_Role = " . $ID_Role . ";");
+
         return $utilisateur->fetch();
     }
 }
@@ -530,10 +633,67 @@ class Pilote
         return $stmt->execute();
     }
 
-    public function UpPilote()
+    public function UpPilote($identifiant, $nom, $prenom, $email, $centre, $ID_Role, $promotion)
     {
         $this->connexion();
-        $utilisateur = $this->_connexion->query("");
+        if (empty($prenom) && empty($nom) && empty($Promotion) && empty($centre) && empty($email)) {
+            header('Location: ../update/update_profil.php');
+        }
+
+        $reqtpromo = "";
+
+        if (empty($prenom)) {
+            $U_Prenom = "";
+            $prenom = "";
+        } else {
+            $U_Prenom = 'prenom =';
+            $prenom = $this->_connexion->quote($prenom) . ',';
+        }
+
+        if (empty($nom)) {
+            $U_Nom = "";
+            $nom = "";
+        } else {
+            $U_Nom = 'nom =';
+            $nom = $this->_connexion->quote($nom) . ',';
+        }
+
+        if (empty($promotion)) {
+            $reqtpromo = "";
+            $U_Email = "";
+            $promotion = "";
+        } else {
+            $promotion = $this->_connexion->quote($promotion);
+            $reqtpromo = "UPDATE pilote SET promotion_assignees = " . $promotion . " WHERE id_user = @idUser;";
+        }
+
+        if (empty($centre)) {
+            $U_centre = "";
+            $centre = "";
+        } else {
+            $U_centre = 'centre =';
+            $centre = $this->_connexion->quote($centre) . ',';
+        }
+
+        if (empty($email)) {
+            $U_Email = "";
+            $email = "";
+        } else {
+            $U_Email = 'email =';
+            $email = $this->_connexion->quote($email) . ',';
+        }
+
+        $utilisateur = $this->_connexion->query("
+        SET @IdAuth = (SELECT id_auth FROM authentification 
+        WHERE login = " . $this->_connexion->quote($identifiant) . ");
+        SET @idUser = (SELECT id_user FROM user WHERE id_auth = @IdAuth);
+
+        " . $reqtpromo . "
+
+        UPDATE user SET " . $U_Nom . " " . $nom . " " . $U_Prenom . " " . $prenom . " 
+        " . $U_Email . " " . $email . " " . $U_centre . " " . $centre . " id_user = @idUser
+        WHERE id_user = @idUser and ID_Role = " . $ID_Role . ";");
+
         return $utilisateur->fetch();
     }
 }
