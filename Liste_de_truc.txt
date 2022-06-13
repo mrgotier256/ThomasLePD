@@ -1,18 +1,11 @@
-Create/Update/Delete eleve
-Create/Update/Delete pilote
-Update offre
-Update entreprise
-
-Barre de filtrage info : en cours
-
-Faire la wish liste
+Faire la wish liste : en cours
 
 Afficher les offres postulée par l'élève
 
 Avancement eleve 6 étapes
 
-Afficher automatiquement infos dans profil
-
 Liens en général à faire plus beau
 
 Gérer les cookies
+
+PWA

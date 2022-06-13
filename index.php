@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'base_main/head.php';
 echo '<link rel="stylesheet" href="mainpage/mainPage.css">';
 include 'base_main/header.php';
@@ -113,7 +114,6 @@ function DelFromWishList(idoffre, iduser) {
                 $lien =  $user['id_offre'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['competences'] . " " . "|" . " " . $user['duree'] . " " . 'semaines' . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_fiche'] . " ";
                 echo "<div class=\"bdd\">
                 <a class=\"joie\" href = 'mineures/offre.php?idOffre=" . $user['id_offre'] . "'><b>" . $lien . "</b></a>
-                <button id=". $user['id_offre']." name=". $user['id_offre']." onclick=ToWishList(".$user['id_offre'].") >Ajouter</button></div>
                 </div>";
             }
             $users->getOffre();
