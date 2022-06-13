@@ -22,15 +22,12 @@ include '../base/header.php';
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body" style="color:white;">
-            <a href="eleve.php">Profil</a>
-            <br></br>
-            <a href="wish.php">Wish-Liste</a>
-            <br></br>
-            <a href="offre.php">Offre de stage postulée</a>
-            <br></br>
-            <div>
-                <a class="deco" href="../deco/deconnexion.php">Deconnexion</a>
-            </div>
+        <?php
+                    include'../link_bar/link_bar.php'; 
+                ?>
+                <div>
+                    <a class="deco" href="../deco/deconnexion.php">Deconnexion</a>
+                </div>
         </div>
     </div>
 </main>

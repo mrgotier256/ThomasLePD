@@ -88,24 +88,9 @@ if (@$_SESSION['auth'] == true) {
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body" style="color:white;">
-                <a href="../profil/admin.php">Profil</a>
-                <br></br>
-                <a href="../listes/l-eleve.php">Liste des élèves</a>
-                <br></br>
-                <a href="../listes/l-pilote.php">Listes des pilotes</a>
-                <br></br>
-                <a href="../listes/l-delegue.php">Listes des délegués</a>
-                <br></br>
-                <a href="../listes/l-entreprise.php">Listes des entreprises</a>
-                <br></br>
-                <a href="../listes/l-offre.php">Listes des offres de stage</a>
-                <br></br>
-                <a href="../creation/creation_profil.php">Création d\'un profil</a>
-                <br></br>
-                <a href="../creation/creation_entreprise.php">Création d\'une entreprise</a>
-                <br></br>
-                <a href="../creation/creation_offre.php">Création d\'une offre</a>
-                <br></br>
+            <?php
+                    include'../link_bar/link_bar.php'; 
+                ?>
                 <div>
                     <a class="deco" href="../deco/deconnexion.php">Deconnexion</a>
                 </div>
