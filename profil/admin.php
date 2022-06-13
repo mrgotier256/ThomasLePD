@@ -48,7 +48,7 @@ if (@$_SESSION['auth'] == true) {
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body" style="color:white;">
-            <?php
+                <?php
                     include'../link_bar/link_bar.php'; 
                 ?>
                 <div>
