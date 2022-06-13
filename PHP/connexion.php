@@ -12,6 +12,7 @@ if(count($verif)>0)
     $_SESSION['user']['prenom']=$verif[0]['prenom'];
     $_SESSION['user']['email']=$verif[0]['email'];
     $_SESSION['user']['centre']=$verif[0]['centre'];
+    $_SESSION['user']['id_user']=$verif[0]['id_user'];
 
     header("Location:../mainpage/mainPage.php");
     exit;

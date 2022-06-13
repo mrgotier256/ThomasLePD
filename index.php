@@ -3,7 +3,54 @@ include 'base_main/head.php';
 echo '<link rel="stylesheet" href="mainpage/mainPage.css">';
 include 'base_main/header.php';
 ?>
+<script>
+function ToWishList(idoffre, iduser) {
+    //var name = document.getElementById("id").value;
+    if (id) {
+        console.log(id);
+        $.ajax({
+            type: 'post',
+            url: '../Wishlist/InteractWishList.php',
+            data: {
+                id_offre: idoffre,
+                id_user: iduser,
+                ToWishList: true,
 
+            },
+            success: function(response) {
+                $('#ajax').html(response);
+            }
+        });
+        //location.reload(true);
+    } else {
+        $('#ajax').html("");
+    }
+}
+
+function DelFromWishList(idoffre, iduser) {
+    //var name = document.getElementById("id").value;
+    if (id) {
+        console.log(id);
+        $.ajax({
+            type: 'post',
+            url: '../Wishlist/InteractWishList.php',
+            data: {
+                id_offre: idoffre,
+                id_user: iduser,
+                DelFromWishList: true,
+
+            },
+            success: function(response) {
+                $('#ajax').html(response);
+            }
+        });
+        //location.reload(true);
+    } else {
+        $('#ajax').html("");
+    }
+}
+
+</script>
 <main>
     <div>
         <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -64,7 +111,10 @@ include 'base_main/header.php';
                 $date = new DateTime($user['date_offre']);
                 $lien = "";
                 $lien =  $user['id_offre'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['competences'] . " " . "|" . " " . $user['duree'] . " " . 'semaines' . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_fiche'] . " ";
-                echo "<div class=\"bdd\"><a class=\"joie\" href = 'mineures/offre.php?idOffre=" . $user['id_offre'] . "'><b>" . $lien . "</b></a></div>";
+                echo "<div class=\"bdd\">
+                <a class=\"joie\" href = 'mineures/offre.php?idOffre=" . $user['id_offre'] . "'><b>" . $lien . "</b></a>
+                <button id=". $user['id_offre']." name=". $user['id_offre']." onclick=ToWishList(".$user['id_offre'].") >Ajouter</button></div>
+                </div>";
             }
             $users->getOffre();
             $toutesLignes = (int)$users->compterOffre();

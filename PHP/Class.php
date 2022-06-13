@@ -786,17 +786,30 @@ class WishListe
         return $utilisateur->fetchAll();
     }
 
-    public function AddWishListe()
+    public function AddWishListe($identifiant, $idoffre)
     {
         $this->connexion();
-        $utilisateur = $this->_connexion->query("");
+        $utilisateur = $this->_connexion->query("SET @idetu = (SELECT id_eleve FROM eleve WHERE id_user = ".$identifiant.");
+        SET @NomEntreprise = (SELECT entreprise FROM offre_de_stage WHERE id_offre = ".$idoffre.");
+        
+        INSERT INTO wishlist (id_eleve, Nom_entreprise) VALUES (@idetu, @NomEntreprise);
+        
+        SET @ID = (SELECT ID FROM wishlist WHERE id_eleve = @idetu AND Nom_entreprise = @NomEntreprise);
+        
+        INSERT INTO relation_wishlist_avec_stage (id_offre, ID) VALUES (@idetu, @ID);");
+
         return $utilisateur->fetchAll();
     }
 
-    public function delWishListe()
+    public function delWishListe($identifiant, $idoffre)
     {
         $this->connexion();
-        $utilisateur = $this->_connexion->query("");
+        $utilisateur = $this->_connexion->query("SET @idetu = (SELECT id_eleve FROM eleve WHERE id_user = ".$identifiant.");
+        SET @NomEntreprise = (SELECT entreprise FROM offre_de_stage WHERE id_offre = ".$idoffre.");
+        SET @ID = (SELECT ID FROM wishlist WHERE id_eleve = @idetu AND Nom_entreprise = @NomEntreprise);
+
+        DELETE FROM relation_wishlist_avec_stage WHERE ID = @ID;
+        DELETE FROM wishlist WHERE ID = @ID;");
         return $utilisateur->fetchAll();
     }
 }
