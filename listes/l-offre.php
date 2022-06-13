@@ -13,7 +13,7 @@ if (@$_SESSION['auth'] == true) {
                     +
                 </a>
                 <div class="text-center col-11">
-                    <article class="prof">Liste des offres
+                    <article style="height :540px;">Liste des offres
                         <?php require '../PHP/Class.php';
                         $users = new Offre();
                         if (isset($_GET['page']) && !empty($_GET['page'])) {
