@@ -53,20 +53,9 @@ if (@$_SESSION['auth'] == true) {
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body" style="color:white;">
-                <a href="pilote.php">Profil</a>
-                <br></br>
-                <a href="../listes/l-eleve.php">Liste d'élèves</a>
-                <br></br>
-                <a href="../listes/l-delegue.php">Liste des délegués</a>
-                <br></br>
-                <a href="../listes/l-entreprise.php">Listes des entreprises</a>
-                <br></br>
-                <a href="../listes/l-offre.php">Listes des offres de stage</a>
-                <br></br>
-                <a href="../creation/creation_entreprise.php">Création d'une entreprise</a>
-                <br></br>
-                <a href="../creation/creation_offre.php">Création d'une offre</a>
-                <br></br>
+            <?php
+                    include'../link_bar/link_bar.php'; 
+                ?>
                 <div>
                     <a class="deco" href="../deco/deconnexion.php">Deconnexion</a>
                 </div>
