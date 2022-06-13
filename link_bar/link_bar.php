@@ -43,16 +43,16 @@ if (@$_SESSION['auth'] == true) {
         <br></br>
         <a href="../listes/l-offre.php">Liste des offres</a>
         <br></br>
-        <a href="../creation/creation_offre.php">Création d\'une offre</a>
-        <br></br>';
-            break;
-        
-        case 4:
-            echo '<a class="navbar-brand pad" href="../profil/eleve.php">Profil</a>
-        <br></br>
-        <a href="../listes/l-offre.php">Liste des offres</a>
-        <br></br>';
-        break;
-    }
-}
+        <a href="../creation/creation_offre.php">Création d\'une offre</a> 
+        <br></br>'; 
+            break; 
+         
+        case 4: 
+            echo '<a class="navbar-brand pad" href="../profil/eleve.php">Profil</a> 
+        <br></br> 
+        <a href="../listes/l-offre.php">Liste des offres</a> 
+        <br></br>'; 
+        break; 
+    } 
+} 
 ?>

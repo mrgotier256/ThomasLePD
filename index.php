@@ -4,54 +4,7 @@ include 'base_main/head.php';
 echo '<link rel="stylesheet" href="mainpage/mainPage.css">';
 include 'base_main/header.php';
 ?>
-<script>
-function ToWishList(idoffre, iduser) {
-    //var name = document.getElementById("id").value;
-    if (id) {
-        console.log(id);
-        $.ajax({
-            type: 'post',
-            url: '../Wishlist/InteractWishList.php',
-            data: {
-                id_offre: idoffre,
-                id_user: iduser,
-                ToWishList: true,
 
-            },
-            success: function(response) {
-                $('#ajax').html(response);
-            }
-        });
-        //location.reload(true);
-    } else {
-        $('#ajax').html("");
-    }
-}
-
-function DelFromWishList(idoffre, iduser) {
-    //var name = document.getElementById("id").value;
-    if (id) {
-        console.log(id);
-        $.ajax({
-            type: 'post',
-            url: '../Wishlist/InteractWishList.php',
-            data: {
-                id_offre: idoffre,
-                id_user: iduser,
-                DelFromWishList: true,
-
-            },
-            success: function(response) {
-                $('#ajax').html(response);
-            }
-        });
-        //location.reload(true);
-    } else {
-        $('#ajax').html("");
-    }
-}
-
-</script>
 <main>
     <div>
         <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">

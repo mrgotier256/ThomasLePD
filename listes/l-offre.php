@@ -25,10 +25,12 @@ if (@$_SESSION['auth'] == true) {
                             $date = new DateTime($user['date_offre']);
                             $lien = "";
                             $lien =  $user['competences'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['duree'] . " " . " semaines" . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_fiche'] . " ";
-                            echo "<div class=\"bdd\">
-                            <a class=\"joie\" href = 'mineures/offre.php?idOffre=" . $user['id_offre'] . "'><b>" . $lien . "</b></a>
-                            <button id=". $user['id_offre']." name=". $user['id_offre']." onclick=ToWishList(".$user['id_offre'].") >Ajouter</button></div>
-                            </div>";
+                            ?>
+                            <div class="bdd">
+                            <a class="joie" href = "../mineures/offre.php?idOffre=<?= $user['id_offre'] ?>"><b><?= $lien?> </b></a>
+                            <button id="<?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="ToWishList(<?= $user['id_offre'] ?>)" >Ajouter</button>
+                            <button id="<?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="DelFromWishList(<?= $user['id_offre'] ?>)" >Supprimer</button>                            
+                            </div><?php
                         }
                         $users->getOffre();
 
@@ -70,6 +72,8 @@ if (@$_SESSION['auth'] == true) {
                                 </li>
                             </ul>
                         </nav>
+                        <div id="ajax"> </div>
+
                     </article>
                     <form method="get" action="../delete/delete_offre.php">
                         <span><input type="id" name="id_offre" placeholder="Saisissez l\'id" required /></span>
@@ -101,3 +105,46 @@ if (@$_SESSION['auth'] == true) {
     exit;
 }
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+function ToWishList(idoffre) {
+    if (idoffre) {
+        console.log(idoffre);
+        $.ajax({
+            type: 'post',
+            url: '../Wishlist/InteractWishList.php',
+            data: {
+                id_offre: idoffre,
+                ToWishList: true,
+            },
+            success: function(response) {
+            }
+        });
+        //location.reload(true);
+    } else {
+        $('#ajax').html("");
+    }
+}
+
+function DelFromWishList(idoffre) {
+    if (idoffre) {
+        console.log(idoffre);
+        $.ajax({
+            type: 'post',
+            url: '../Wishlist/InteractWishList.php',
+            data: {
+                id_offre: idoffre,
+                DelFromWishList: true,
+
+            },
+            success: function(response) {
+            }
+        });
+        //location.reload(true);
+    } else {
+        $('#ajax').html("");
+    }
+}
+
+</script>
