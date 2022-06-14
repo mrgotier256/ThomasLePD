@@ -1,7 +1,7 @@
 section {
     height: 535px;
     overflow: auto;
-    background-color: grey;
+    background-color: rgb(77, 82, 96);
     border: 2px solid black;
     border-radius: 20px;
     color: white;
@@ -10,7 +10,7 @@ section {
 fieldset {
     width: 50%;
     margin: auto;
-    background-color: grey;
+    background-color: rgb(77, 82, 96);
     border: 2px solid black;
     border-radius: 20px;
     padding: 3px;
@@ -30,7 +30,7 @@ div>input {
 article {
     height: 535px;
     overflow: auto;
-    background-color: grey;
+    background-color: rgb(77, 82, 96);
     border: 2px solid black;
     border-radius: 20px;
     color: white;
@@ -50,27 +50,27 @@ body {
 }
 
 main {
-    background-color: whitesmoke;
+    background-color: rgb(235, 245, 249);
     padding: 0;
     padding-top: 60px;
 }
 
 footer {
-    background-color: #2b241f;
+    background-color: #1f2a2b;
     color: azure;
 }
 
 .pad {
-    padding-top: 1px
+    padding-top: 1px;
 }
 
 footer a {
     padding: 0 5px;
-    color: blanchedalmond;
+    color: rgb(205, 213, 255);
 }
 
 .bdd {
-    background-color: slategray;
+    background-color: rgb(158, 187, 215);
     border: 2px solid black;
     border-radius: 20px;
     padding: 4px;

@@ -10,8 +10,9 @@ include '../base/header.php';
             <a class="btn btn-secondary col-1 bout fixed-top" style="margin:56px 0; width: 53px; height:53px;" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                 +
             </a>
-            <div class="text-center col-11">
-                <article class="prof">Liste des résultats
+            <div class="col-1"></div>
+            <div class="text-center col-10" style="height:60%;">
+                <article style="height: 650px;overflow:auto;">Liste des résultats
                     <?php require '../PHP/Class.php';
 
                     if (@$_SESSION['auth'] == true) {

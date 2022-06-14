@@ -5,14 +5,14 @@ include '../base/header.php';
 require '../PHP/Class.php';
 ?>
 
-<main>
-    <div class="container">
-        <div class="row">
-            <article class="col-2" style="text-align:center;">Filtrage
+<main style="height:90%;padding: 90px;">
+    <div class="container" >
+        <div class="row" style="text-align:center;margin:auto;padding: 0px;">
+            <article class="col-2" style="text-align:center;margin:auto;padding: 0px;">Filtrage
                 <form method="post" action="../recherche/RechercheStage.php">
                     <ul>
                         <tr>
-                            <div class="col-5">Entreprise</div>
+                            <div class="col-6">Entreprise</div>
                         </tr>
                         <select id="EntrepriseNom" name="EntrepriseNom" style="width:165px;">
                             <option value="">Entreprise</option>
@@ -26,7 +26,7 @@ require '../PHP/Class.php';
                             ?>
                         </select>
                         <tr>
-                            <div class="col-5">Compétences</label></div>
+                            <div class="col-6">Compétences</label></div>
                         </tr>
                         <select id="StageCompetence" name="StageCompetence" style="width:165px;">
                             <option value="">Competence</option>
@@ -40,7 +40,7 @@ require '../PHP/Class.php';
                             ?>
                         </select>
                         <tr>
-                            <div class="col-5">Localité</label></div>
+                            <div class="col-6">Localité</label></div>
                         </tr>
                         <select id="StageLocalite" name="StageLocalite" style="width:165px;">
                             <option value="">Localite</option>
@@ -55,15 +55,15 @@ require '../PHP/Class.php';
                         </select>
 
                         <tr>
-                            <div class="col-5">Durée (en semaine)</label></div>
+                            <div class="col-6">Durée (en semaine)</label></div>
                         </tr>
-                        <div class="col-5"><input type="number" name="StageDuree" placeholder="Durée de stage" style="width:165px;" /></div>
+                        <div class="col-6"><input type="number" name="StageDuree" placeholder="Durée de stage" style="width:165px;" /></div>
                         <br>
-                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        <button class="btn btn-outline-light" type="submit">Search</button>
                     </ul>
                 </form>
             </article>
-            <article class="col-12" style="width:80%">
+            <article class="col-12" style="width:80%;">
                 <?php
                 $users = new Offre();
                 if (isset($_GET['page']) && !empty($_GET['page'])) {

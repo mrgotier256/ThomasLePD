@@ -1,16 +1,7 @@
-section {
-    height: 535px;
-    overflow: auto;
-    background-color: grey;
-    border: 2px solid black;
-    border-radius: 20px;
-    color: white;
-}
-
 fieldset {
     width: 50%;
     margin: auto;
-    background-color: grey;
+    background-color: rgb(77, 82, 96);
     border: 2px solid black;
     border-radius: 20px;
     padding: 3px;
@@ -20,20 +11,6 @@ fieldset {
     fieldset {
         width: 100%;
     }
-}
-
-div>input {
-    margin: 3px;
-    width: 95%;
-}
-
-article {
-    height: 535px;
-    overflow: auto;
-    background-color: grey;
-    border: 2px solid black;
-    border-radius: 20px;
-    color: white;
 }
 
 #mainCarousel {
@@ -50,44 +27,29 @@ body {
 }
 
 main {
-    background-color: whitesmoke;
+    background-color: rgb(235, 245, 249);
     padding: 0;
     padding-top: 60px;
 }
 
 footer {
-    background-color: #2b241f;
+    background-color: #1f2a2b;
     color: azure;
 }
 
 .pad {
-    padding-top: 1px
+    padding-top: 1px;
 }
 
 footer a {
     padding: 0 5px;
-    color: blanchedalmond;
+    color: rgb(205, 213, 255);
 }
 
-.bdd {
-    background-color: slategray;
-    border: 2px solid black;
-    border-radius: 20px;
-    padding: 4px;
-    margin: 5px;
-}
 
 .joie {
     text-decoration: none;
     color: black;
-}
-
-.decol {
-    color: rgb(255, 255, 255);
-    background-color: darkgrey;
-    border: 2px black solid;
-    padding-left: 28px;
-    padding-right: 28px;
 }
 
 a {
@@ -100,53 +62,4 @@ a {
     background-color: darkred;
     border: 2px black solid;
     padding: 4px;
-}
-
-.etudiant {
-    padding: 17px;
-    background-color: #ffd000;
-    border: 2px solid whitesmoke;
-    border-radius: 20px;
-    margin: 5px;
-    color: black;
-}
-
-.pilote {
-    padding: 17px;
-    background-color: #fb542f;
-    border: 2px solid whitesmoke;
-    border-radius: 20px;
-    margin: 5px;
-    color: black;
-}
-
-.entreprise {
-    padding: 17px;
-    background-color: #006aff;
-    border: 2px solid whitesmoke;
-    border-radius: 20px;
-    margin: 5px;
-    color: black;
-}
-
-.offre {
-    padding: 17px;
-    background-color: #0a9602;
-    border: 2px solid whitesmoke;
-    border-radius: 20px;
-    margin: 5px;
-    color: black;
-}
-
-.delegue {
-    padding: 17px;
-    background-color: #9f0087;
-    border: 2px solid whitesmoke;
-    border-radius: 20px;
-    margin: 5px;
-    color: black;
-}
-
-.bout {
-    height: 10%;
 }
