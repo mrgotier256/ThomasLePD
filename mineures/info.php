@@ -5,10 +5,10 @@ include '../base/header.php';
 require '../PHP/Class.php';
 ?>
 
-<main style="height:90%;padding: 90px;">
+<main>
     <div class="container" >
-        <div class="row" style="text-align:center;margin:auto;padding: 0px;">
-            <article class="col-2" style="text-align:center;margin:auto;padding: 0px;">Filtrage
+        <div class="row">
+            <article class="col-2" style="text-align:center;">Filtrage
                 <form method="post" action="../recherche/RechercheStage.php">
                     <ul>
                         <tr>
