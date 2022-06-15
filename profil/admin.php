@@ -33,7 +33,7 @@ if (@$_SESSION['auth'] == true) {
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col-sm-1">Centre</div>
+                                <div class="col-sm-1">Etablissement</div>
                                 <div class="col-sm-11"><input type="text" class="col-sm-6" disabled="disabled" placeholder="Centre" id="centre" required value="<?= $_SESSION['user']['centre'] ?>" /></div>
                             </div>
                             <br>

@@ -14,8 +14,8 @@ if (@$_SESSION['auth'] == true) {
                     +
                 </a>
                 <div class="text-center col-11">
-                    <article class="prof"> Profil
-                        <div style="width: 65%; margin:auto;">
+                    <article class="prof">
+                        <div style="width: 45%; margin:auto;">
                             <img src="../assets/images/delegue.jpg"></img>
                             <br>
                             <div class="row" style="margin-top:50px;">
