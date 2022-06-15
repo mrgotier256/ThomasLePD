@@ -12,7 +12,7 @@ include '../base/header.php';
             </a>
             <div class="col-1"></div>
             <div class="text-center col-10" style="height:60%;">
-                <article style="height: 650px;overflow:auto;">Liste des résultats
+                <article style="height:450px; overflow:auto;">Liste des résultats
                     <?php require '../PHP/Class.php';
 
                     if (@$_SESSION['auth'] == true) {
@@ -54,7 +54,7 @@ include '../base/header.php';
                                 foreach ($competences->getOffrebyComp($_GET['Recherche']) as $competence) {
                                     $date = new DateTime($competence['date_offre']);
                                     $lien = "";
-                                    $lien =  $competence['id_offre'] . " " . "|" . " " . $competence['localite'] . " " . "|" . " " . $competence['entreprise'] . " " . "|" . " " . $competence['competences'] . " " . "|" . " " . $competence['duree'] . " " . 'semaines' . " " . "|" . " " . $competence['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $competence['id_fiche'] . " ";
+                                    $lien =  $competence['localite'] . " " . "|" . " " . $competence['entreprise'] . " " . "|" . " " . $competence['competences'] . " " . "|" . " " . $competence['duree'] . " " . 'semaines' . " " . "|" . " " . $competence['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " ";
                                     echo "<div class=\"offre\"><h5><strong>Offre de stage</strong></h5><a class=\"joie\" href = '../mineures/offre.php?idOffre=" . $competence['id_offre'] . "'><b>" . $lien . "</b></a></div>";
                                 }
                                 $competences->getOffrebyComp($_GET['Recherche']);
@@ -89,7 +89,7 @@ include '../base/header.php';
                                 foreach ($competences->getOffrebyComp($_GET['Recherche']) as $competence) {
                                     $date = new DateTime($competence['date_offre']);
                                     $lien = "";
-                                    $lien =  $competence['id_offre'] . " " . "|" . " " . $competence['localite'] . " " . "|" . " " . $competence['entreprise'] . " " . "|" . " " . $competence['competences'] . " " . "|" . " " . $competence['duree'] . " " . 'semaines' . " " . "|" . " " . $competence['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $competence['id_fiche'] . " ";
+                                    $lien =  $competence['localite'] . " " . "|" . " " . $competence['entreprise'] . " " . "|" . " " . $competence['competences'] . " " . "|" . " " . $competence['duree'] . " " . 'semaines' . " " . "|" . " " . $competence['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " ";
                                     echo "<div class=\"offre\"><h5><strong>Offre de stage</strong></h5><a class=\"joie\" href = '../mineures/offre.php?idOffre=" . $competence['id_offre'] . "'><b>" . $lien . "</b></a></div>";
                                 }
                                 $competences->getOffrebyComp($_GET['Recherche']);
@@ -116,7 +116,7 @@ include '../base/header.php';
                                 foreach ($competences->getOffrebyComp($_GET['Recherche']) as $competence) {
                                     $date = new DateTime($competence['date_offre']);
                                     $lien = "";
-                                    $lien =  $competence['id_offre'] . " " . "|" . " " . $competence['localite'] . " " . "|" . " " . $competence['entreprise'] . " " . "|" . " " . $competence['competences'] . " " . "|" . " " . $competence['duree'] . " " . 'semaines' . " " . "|" . " " . $competence['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $competence['id_fiche'] . " ";
+                                    $lien =  $competence['localite'] . " " . "|" . " " . $competence['entreprise'] . " " . "|" . " " . $competence['competences'] . " " . "|" . " " . $competence['duree'] . " " . 'semaines' . " " . "|" . " " . $competence['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " ";
                                     echo "<div class=\"offre\"><h5><strong>Offre de stage</strong></h5><a class=\"joie\" href = '../mineures/offre.php?idOffre=" . $competence['id_offre'] . "'><b>" . $lien . "</b></a></div>";
                                 }
                                 $competences->getOffrebyComp($_GET['Recherche']);
@@ -136,7 +136,7 @@ include '../base/header.php';
                                 foreach ($competences->getOffrebyComp($_GET['Recherche']) as $competence) {
                                     $date = new DateTime($competence['date_offre']);
                                     $lien = "";
-                                    $lien =  $competence['id_offre'] . " " . "|" . " " . $competence['localite'] . " " . "|" . " " . $competence['entreprise'] . " " . "|" . " " . $competence['competences'] . " " . "|" . " " . $competence['duree'] . " " . 'semaines' . " " . "|" . " " . $competence['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $competence['id_fiche'] . " ";
+                                    $lien =  $competence['localite'] . " " . "|" . " " . $competence['entreprise'] . " " . "|" . " " . $competence['competences'] . " " . "|" . " " . $competence['duree'] . " " . 'semaines' . " " . "|" . " " . $competence['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " ";
                                     echo "<div class=\"offre\"><h5><strong>Offre de stage</strong></h5><a class=\"joie\" href = '../mineures/offre.php?idOffre=" . $competence['id_offre'] . "'><b>" . $lien . "</b></a></div>";
                                 }
                                 $competences->getOffrebyComp($_GET['Recherche']);

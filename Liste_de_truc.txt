@@ -9,3 +9,5 @@ Liens en général à faire plus beau
 Gérer les cookies
 
 PWA
+
+Faire des permissions de vision en fonction des rôles, ex : si admin co vision des id, sinon pas de vison id
