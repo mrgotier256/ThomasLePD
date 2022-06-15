@@ -14,7 +14,7 @@ $date = new DateTime($detail['date_offre']);
 <main>
     <div class="container">
         <div class="row">
-            <article class="col-sm-6 hauteur" style="height:950px">
+            <article class="col-sm-6 hauteur" style="height:620px">
                 <img src="../assets/images/entreprise.png" class="rounded mx-auto d-block" style="height:20%; margin-top:10px;"></img>
                 <div class="row bdd" style="margin-top:20px;">
                     <div class="col-sm-3">Entreprise</div>
@@ -40,16 +40,16 @@ $date = new DateTime($detail['date_offre']);
                     <div class="col-sm-3">Date mise en ligne</div>
                     <?php echo '<div class="col-sm-8"><input type="text" class="col-sm-6" disabled="disabled" style="font-weight:bold;" value="  '.date_format($date,'d-m-Y').'" /></div>'; ?>
                 </div>
-                <div class="row bdd" style="margin-top:20px;">
+                <!-- <div class="row bdd" style="margin-top:20px;">
                     <div class="col-sm-3">ID Entreprise</div>
-                    <?php echo '<div class="col-sm-8"><input type="text" class="col-sm-6" disabled="disabled" style="font-weight:bold;" value="  '.$detail['id_fiche'].'" /></div>'; ?>
-                </div>
-                <div class="row bdd" style="margin-top:20px;">
+                    <-- <?php echo '<div class="col-sm-8"><input type="text" class="col-sm-6" disabled="disabled" style="font-weight:bold;" value="  '.$detail['id_fiche'].'" /></div>'; ?>
+                </div> -->
+                <!-- <div class="row bdd" style="margin-top:20px;">
                     <div class="col-sm-3">ID Offre</div>
-                    <?php echo '<div class="col-sm-8"><input type="text" class="col-sm-6" disabled="disabled" style="font-weight:bold;" value="  '.$detail['id_offre'].'" /></div>'; ?>
-                </div>
+                    <-- <?php echo '<div class="col-sm-8"><input type="text" class="col-sm-6" disabled="disabled" style="font-weight:bold;" value="  '.$detail['id_offre'].'" /></div>'; ?> 
+                </div> -->
             </article>
-            <article class="col-sm-6">
+            <article class="col-sm-6" style="height:620px">
                 <div>
                     <h2 class="nom">Nom de l'offre de stage</h2>
                 </div>
