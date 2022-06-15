@@ -24,12 +24,12 @@ if (@$_SESSION['auth'] == true) {
                         <div class="row">
                             <table>
                                 <tr>
-                                    <label for="Pilote" class="col-2">Pilote</label>
-                                    <input type="radio" class="col-2" id="Pilote" name="Role" value="2" required onChange="griserpromo()" />
-                                    <label for="Eleve" class="col-2">Eleve</label>
-                                    <input type="radio" class="col-2" id="Eleve" name="Role" value="4" required onChange="griserpromo()" />
-                                    <label for="Delegue" class="col-2">Delegue</label>
-                                    <input type="radio" class="col-2" id="Delegue" name="Role" value="3" required onChange="griserpromo()" />
+                                    <label for="Pilote" class="col-2" style="padding-bottom:1px">Pilote</label>
+                                    <input type="radio" class="col-2" style="padding-bottom:1px" id="Pilote" name="Role" value="2" required onChange="griserpromo()" />
+                                    <label for="Eleve" class="col-2" style="padding-bottom:1px">Eleve</label>
+                                    <input type="radio" class="col-2" style="padding-bottom:1px" id="Eleve" name="Role" value="4" required onChange="griserpromo()" />
+                                    <label for="Delegue" class="col-2" style="padding-bottom:1px">Delegue</label>
+                                    <input type="radio" class="col-2" style="padding-bottom:1px" id="Delegue" name="Role" value="3" required onChange="griserpromo()" />
                                 </tr>
                                     <tr>
                                         <td>
