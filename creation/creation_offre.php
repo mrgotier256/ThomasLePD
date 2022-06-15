@@ -15,13 +15,13 @@ if (@$_SESSION['auth'] == true) {
                         <legend>Création d'une offre de stage</legend>
                         <div class="row">
 
-                            <div class="col-6"><label for="comp">Competences</label></div>
+                            <div class="col-6" style="padding:7px;"><label for="comp">Competences</label></div>
                             <div class="col-6"><input type="text" name="comp" placeholder="Saisissez le(s) compétence(s) requise(s)" required /></div>
 
-                            <div class="col-6"><label for="loca">Localité</label></div>
+                            <div class="col-6" style="padding:7px;"><label for="loca">Localité</label></div>
                             <div class="col-6"><input type="text" name="loca" placeholder="Saisissez une localité" required /></div>
 
-                            <div class="col-6"><label for="ID_ent">Entreprise</label></div>
+                            <div class="col-6" style="padding:7px; padding-bottom:7px;"><label for="ID_ent">Entreprise</label></div>
                             <select name="ID_ent" style="width:165px;">
                                 <option value="">Entreprise</option>
                                 <?php
@@ -34,22 +34,20 @@ if (@$_SESSION['auth'] == true) {
                                 ?>
                             </select>
 
-                            <div class="col-6"><label for="dur">Durée (en semaine)</label></div>
+                            <div class="col-6" style="padding:7px;"><label for="dur">Durée (en semaine)</label></div>
                             <div class="col-6"><input type="number" name="dur" placeholder="Saisissez une durée" required /></div>
 
-                            <div class="col-6"><label for="em">Date d'emission</label></div>
-                            <div class="col-6"><input type="date" name="em" placeholder=" chiasse" required /></div>
+                            <div class="col-6" style="padding:7px;"><label for="em">Date d'emission</label></div>
+                            <div class="col-6"><input type="date" name="em" placeholder=" Saisissez une date" required /></div>
 
-                            <div class="col-6"><label for="remu">Rémunération</label></div>
+                            <div class="col-6" style="padding:7px;"><label for="remu">Rémunération</label></div>
                             <div class="col-6"><input type="number" name="remu" placeholder="Saisissez la rémunération proposée" required /></div>
 
-
-                            <div>
-                                <div class="col-3"></div>
-                                <div class="col-3"><input type="submit" value="Envoyer" id="envoyer"></div>
-                                <div class="col-3"><input type="reset" value="Annuler" /></div>
-                                <div class="col-3"></div>
-                            </div>
+                            <br><br>
+                            <div class="col-3"></div>
+                            <div class="col-3"><input type="submit" value="Envoyer" id="envoyer" /></div>
+                            <div class="col-3"><input type="reset" value="Annuler" /></div>
+                            <div class="col-3">
                         </div>
                     </fieldset>
                 </form>

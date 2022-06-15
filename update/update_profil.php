@@ -35,41 +35,49 @@ if (@$_SESSION['auth'] == true) {
                                 <div style="padding-left:200px">
                                     <tr>
                                         <td>
-                                            <div class="col-6"><label for="Login">Login</label></div>
+                                        <label for="Login" class="col-12">Login</label>
                                         </td>
                                         <td>
-                                            <div class="col-6"><input type="text" name="Login" placeholder="Saisissez un login" required /></div>
+                                        <input type="text" name="Login" class="col-6" placeholder="Saisissez un login" required />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="col-6"><label for="Nom">Nom</label></div>
+                                            <label for="Mdp" class="col-12">Mot de passe</label>
                                         </td>
                                         <td>
-                                            <div class="col-6"><input type="text" name="Nom" placeholder="Saisissez un nom" /></div>
+                                            <input type="password" name="Mdp" class="col-6" placeholder="Saisissez un mot de passe" required />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="col-6"><label for="Prenom">Prenom</label></div>
+                                            <label for="Nom" class="col-6">Nom</label>
                                         </td>
                                         <td>
-                                            <div class="col-6"><input type="text" name="Prenom" placeholder="Saisissez un prenom" /></div>
+                                            <input type="text" name="Nom" class="col-6" placeholder="Saisissez un nom" required />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="col-6"><label for="Email">Email</label></div>
+                                            <label for="Prenom" class="col-6">Prenom</label>
                                         </td>
                                         <td>
-                                            <div class="col-6"><input type="email" name="Email" placeholder="Saisissez un email" /></div>
+                                            <input type="text" name="Prenom" class="col-6" placeholder="Saisissez un prenom" required />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="col-6"><label for="Centre">Centre</label></div>
+                                            <label for="Email" class="col-6">Email</label>
                                         </td>
-                                        <td> <select name="Centre" class="col-6">
+                                        <td>
+                                            <input type="email" name="Email" class="col-6" placeholder="Saisissez un email" required />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="Centre" class="col-6">Centre</label>
+                                        </td>
+                                        <td> <select name="Centre" required class="col-6">
                                                 <option value="">Saississez votre Centre</option>
                                                 <option value="Aix-en-Provence">Aix-en-Provence</option>
                                                 <option value="Angoulême">Angoulême</option>
@@ -99,10 +107,10 @@ if (@$_SESSION['auth'] == true) {
                                     </tr>
                                     <tr id="PromotionTR">
                                         <td>
-                                            <div class="col-6"><label for="Promotion">Promotion</label></div>
+                                            <label for="Promotion"class="col-6">Promotion</label>
                                         </td>
                                         <td>
-                                            <select name="Promotion">
+                                        <select name="Promotion" required class="col-6">
                                                 <option value="">Saississez votre Promotion</option>
                                                 <option value="CPIA1">CPI A1</option>
                                                 <option value="CPIA2-INFORMATIQUE">CPIA2-INFORMATIQUE</option>
@@ -126,10 +134,10 @@ if (@$_SESSION['auth'] == true) {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="col-6"><input type="submit" value="Envoyer" id="envoyer"></div>
+                                            <input type="submit" value="Envoyer" id="envoyer" class="col-8">
                                         </td>
                                         <td>
-                                            <div class="col-6"><input type="reset" value="Annuler" /></div>
+                                            <input type="reset" value="Annuler" class="col-6"/>
                                         </td>
                                     </tr>
                                 </div>
@@ -156,6 +164,7 @@ if (@$_SESSION['auth'] == true) {
                 </div>
             </div>
         </div>
+        <br>
     </main>
 <?php
     include '../base/footer.php';

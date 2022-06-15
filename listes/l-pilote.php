@@ -32,8 +32,12 @@ if (@$_SESSION['auth'] == true) {
                             // echo $user['id_user'], " ";
                             // echo '</b></div>';
 
+                            // $lien = "";
+                            // $lien =  $user['id_pilote'] . " " . "|" . " " . $user['nom'] . " " . "|" . " " . $user['prenom'] . " " . "|" . " " . $user['centre'] . " " . "|" . " " . $user['email'] . " " . "|" . " " . $user['promotion_assignees'] . " " . "|" . " " . $user['id_user'];
+                            // echo "<div class=\"bdd\"><a class=\"joie\" href = '../profil/avion.php?idUser=" . $user['id_user'] . "'><b>" . $lien . "</b></a></div>";
+
                             $lien = "";
-                            $lien =  $user['id_pilote'] . " " . "|" . " " . $user['nom'] . " " . "|" . " " . $user['prenom'] . " " . "|" . " " . $user['centre'] . " " . "|" . " " . $user['email'] . " " .$user['promotion_assignees'] . " " . "|" . " " . $user['id_user'];
+                            $lien =  $user['nom'] . " " . "|" . " " . $user['prenom'] . " " . "|" . " " . $user['centre'] . " " . "|" . " " . $user['email'] . " " . "|" . " " . $user['promotion_assignees'];
                             echo "<div class=\"bdd\"><a class=\"joie\" href = '../profil/avion.php?idUser=" . $user['id_user'] . "'><b>" . $lien . "</b></a></div>";
                         }
                         $users->getPilote();

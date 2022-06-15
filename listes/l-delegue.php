@@ -23,8 +23,12 @@ if (@$_SESSION['auth'] == true) {
                             $page = 0;
                         }
                         foreach ($users->getDelegue($page * 10) as $user) {
+                            // $lien = "";
+                            // $lien =  $user['nom'] . " " . "|" . " " . $user['prenom'] . " " . "|" . " " . $user['centre'] . " " . "|" . " " . $user['email'] . " " . "|" . " " . $user['id_user'] . " ";
+                            // echo "<div class=\"bdd\"><a class=\"joie\" href = '../profil/jean.php?idUser=" . $user['id_user'] . "'><b>" . $lien . "</b></a></div>";
+
                             $lien = "";
-                            $lien =  $user['nom'] . " " . "|" . " " . $user['prenom'] . " " . "|" . " " . $user['centre'] . " " . "|" . " " . $user['email'] . " " . "|" . " " . $user['id_user'] . " ";
+                            $lien =  $user['nom'] . " " . "|" . " " . $user['prenom'] . " " . "|" . " " . $user['centre'] . " " . "|" . " " . $user['email'];
                             echo "<div class=\"bdd\"><a class=\"joie\" href = '../profil/jean.php?idUser=" . $user['id_user'] . "'><b>" . $lien . "</b></a></div>";
                         }
                         $users->getDelegue();

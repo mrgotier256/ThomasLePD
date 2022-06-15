@@ -24,24 +24,24 @@ if (@$_SESSION['auth'] == true) {
                         <div class="row">
                             <table>
                                 <tr>
-                                    <label for="Pilote" class="col-2" style="padding-bottom:1px">Pilote</label>
-                                    <input type="radio" class="col-2" style="padding-bottom:1px" id="Pilote" name="Role" value="2" required onChange="griserpromo()" />
-                                    <label for="Eleve" class="col-2" style="padding-bottom:1px">Eleve</label>
-                                    <input type="radio" class="col-2" style="padding-bottom:1px" id="Eleve" name="Role" value="4" required onChange="griserpromo()" />
-                                    <label for="Delegue" class="col-2" style="padding-bottom:1px">Delegue</label>
-                                    <input type="radio" class="col-2" style="padding-bottom:1px" id="Delegue" name="Role" value="3" required onChange="griserpromo()" />
+                                    <div class="col-2"><label for="Pilote">Pilote</label></div>
+                                    <div class="col-2"><input type="radio" id="Pilote" name="Role" value="2" required onChange="griserpromo()" /></div>
+                                    <div class="col-2"><label for="Eleve">Eleve</label></div>
+                                    <div class="col-2"><input type="radio" id="Eleve" name="Role" value="4" required onChange="griserpromo()" /></div>
+                                    <div class="col-2"><label for="Delegue">Delegue</label></div>
+                                    <div class="col-2"><input type="radio" id="Delegue" name="Role" value="3" required onChange="griserpromo()" /></div>
                                 </tr>
                                     <tr>
                                         <td>
-                                            <label for="Login" class="col-6">Login</label>
+                                        <label for="Login" class="col-12">Login</label>
                                         </td>
                                         <td>
-                                            <input type="text" name="Login" class="col-6" placeholder="Saisissez un login" required />
+                                        <input type="text" name="Login" class="col-6" placeholder="Saisissez un login" required />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label for="Mdp" class="col-6">Mot de passe</label>
+                                            <label for="Mdp" class="col-12">Mot de passe</label>
                                         </td>
                                         <td>
                                             <input type="password" name="Mdp" class="col-6" placeholder="Saisissez un mot de passe" required />
@@ -132,7 +132,7 @@ if (@$_SESSION['auth'] == true) {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="submit" value="Envoyer" id="envoyer" class="col-6">
+                                            <input type="submit" value="Envoyer" id="envoyer" class="col-8">
                                         </td>
                                         <td>
                                             <input type="reset" value="Annuler" class="col-6"/>

@@ -14,24 +14,24 @@ if (@$_SESSION['auth'] == true) {
                         <legend>Création d'une entreprise</legend>
                         <div class="row">
 
-                            <div class="col-6"><label for="Nom">Nom</label></div>
+                            <div class="col-6" style="padding:7px;"><label for="Nom">Nom</label></div>
                             <div class="col-6"><input type="text" name="nom" placeholder="Saisissez votre nom" required /></div>
 
-                            <div class="col-6"><label for="Secteur">Secteur d'activité</label></div>
+                            <div class="col-6" style="padding:7px;"><label for="Secteur">Secteur d'activité</label></div>
                             <div class="col-6"><input type="text" name="prenom" placeholder="Saisissez le secteur d'activité" required /></div>
 
-                            <div class="col-6"><label for="Localite">Localité</label></div>
+                            <div class="col-6" style="padding:7px;"><label for="Localite">Localité</label></div>
                             <div class="col-6"><input type="text" name="localite" placeholder="Saisissez la localité" required /></div>
 
-                            <div class="col-6"><label for="NbStag">Nombre de stagiaire</label></div>
+                            <div class="col-6" style="padding:7px;"><label for="NbStag">Nombre de stagiaire</label></div>
                             <div class="col-6"><input type="text" name="nbStag" placeholder="Saisissez le nombre de stagiaire(s)" required /></div>
 
-                            <div class="col-6"><label for="ValStag">Evaluation du stagiaire</label></div>
+                            <div class="col-6" style="padding:7px;"><label for="ValStag">Evaluation du stagiaire</label></div>
                             <div class="col-6"><input type="number" name="valStag" placeholder="Saisissez l'évaluation par le stagiaire" required /></div>
 
-                            <div class="col-6"><label for="ConfPi">Confiance du Pilote</label></div>
+                            <div class="col-6" style="padding:7px;"><label for="ConfPi">Confiance du Pilote</label></div>
                             <div class="col-6"><input type="number" name="confPi" placeholder="Saisissez la confiance du pilote" required /></div>
-
+                            <br><br>
                             <div class="col-3"></div>
                             <div class="col-3"><input type="submit" value="Envoyer" id="envoyer" /></div>
                             <div class="col-3"><input type="reset" value="Annuler" /></div>
@@ -51,9 +51,7 @@ if (@$_SESSION['auth'] == true) {
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body" style="color:white;">
-            <?php
-                    include'../link_bar/link_bar.php'; 
-                ?>
+                <?php include'../link_bar/link_bar.php'; ?>
                 <div>
                     <a class="deco" href="../deco/deconnexion.php">Deconnexion</a>
                 </div>
