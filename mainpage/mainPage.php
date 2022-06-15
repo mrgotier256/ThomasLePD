@@ -16,22 +16,22 @@ include '../base/header.php';
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <a href="https://la1ere.francetvinfo.fr/martinique/hausse-des-materiaux-le-btp-souhaite-negocier-avec-l-etat-et-les-collectivites-pour-maintenir-l-activite-en-martinique-1266648.html">
+                    <a href="https://objectif-languedoc-roussillon.latribune.fr/carrieres/emploi/2022-06-01/penurie-de-candidats-dans-le-btp-les-personnes-eloignees-de-l-emploi-peuvent-etre-une-ressource-920195.html">
                         <img src="../assets/images/btp.jpg" class="d-block w-100" alt="BTP">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="https://korii.slate.fr/tech/cristaux-temporels-futur-informatique-quantique-universite-melbourne-57-qubits-ibm-structure-reproduction-energie">
+                    <a href="https://www.francebleu.fr/infos/economie-social/la-nouvelle-eco-pratik-une-web-application-destinee-aux-personnes-a-la-rue-1653067063">
                         <img src="../assets/images/info.jpg" class="d-block w-100" alt="INFO">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="https://info-du-continent.com/chiffre-daffaires-systemes-embarques-a-microcontraleur-2022/">
+                    <a href="https://objectifaquitaine.latribune.fr/business/aeronautique-et-defense/2021-03-02/luos-choisit-l-open-source-pour-commercialiser-son-architecture-de-systemes-embarques-878853.html">
                         <img src="../assets/images/s3e.jpg" class="d-block w-100" alt="S3E">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="https://www.msn.com/fr-fr/finance/economie/lindustrie-est-morte-vive-la-nouvelle-industrie-fran-c3-a7aise/ar-AAVzACd">
+                    <a href="https://www.petitbleu.fr/2022/06/15/une-innovation-technologique-pour-le-suivi-des-recoltes-10366756.php">
                         <img src="../assets/images/gene.jpg" class="d-block w-100" alt="GENE">
                     </a>
                 </div>
