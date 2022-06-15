@@ -52,6 +52,7 @@ body {
 main {
     background-color: rgb(235, 245, 249);
     padding: 0;
+    color: rgb(235, 245, 249);
     padding-top: 60px;
 }
 

@@ -18,64 +18,62 @@ if (@$_SESSION['auth'] == true) {
     </script>
     <main>
         <div class="container">
-            <div class="row">
                 <form action="../creation/crea_profil.php" method="post" class="text-center">
                     <fieldset>
                         <legend>Création d'un profil</legend>
                         <div class="row">
                             <table>
                                 <tr>
-                                    <div class="col-2"><label for="Pilote">Pilote</label></div>
-                                    <div class="col-2"><input type="radio" id="Pilote" name="Role" value="2" required onChange="griserpromo()" /></div>
-                                    <div class="col-2"><label for="Eleve">Eleve</label></div>
-                                    <div class="col-2"><input type="radio" id="Eleve" name="Role" value="4" required onChange="griserpromo()" /></div>
-                                    <div class="col-2"><label for="Delegue">Delegue</label></div>
-                                    <div class="col-2"><input type="radio" id="Delegue" name="Role" value="3" required onChange="griserpromo()" /></div>
+                                    <label for="Pilote" class="col-2">Pilote</label>
+                                    <input type="radio" class="col-2" id="Pilote" name="Role" value="2" required onChange="griserpromo()" />
+                                    <label for="Eleve" class="col-2">Eleve</label>
+                                    <input type="radio" class="col-2" id="Eleve" name="Role" value="4" required onChange="griserpromo()" />
+                                    <label for="Delegue" class="col-2">Delegue</label>
+                                    <input type="radio" class="col-2" id="Delegue" name="Role" value="3" required onChange="griserpromo()" />
                                 </tr>
-                                <div style="padding-left:200px">
                                     <tr>
                                         <td>
-                                            <div class="col-6"><label for="Login">Login</label></div>
+                                            <label for="Login" class="col-6">Login</label>
                                         </td>
                                         <td>
-                                            <div class="col-6"><input type="text" name="Login" placeholder="Saisissez un login" required /></div>
+                                            <input type="text" name="Login" class="col-6" placeholder="Saisissez un login" required />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="col-6"><label for="Mdp">Mot de passe</label></div>
+                                            <label for="Mdp" class="col-6">Mot de passe</label>
                                         </td>
                                         <td>
-                                            <div class="col-6"><input type="password" name="Mdp" placeholder="Saisissez un mot de passe" required /></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="col-6"><label for="Nom">Nom</label></div>
-                                        </td>
-                                        <td>
-                                            <div class="col-6"><input type="text" name="Nom" placeholder="Saisissez un nom" required /></div>
+                                            <input type="password" name="Mdp" class="col-6" placeholder="Saisissez un mot de passe" required />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="col-6"><label for="Prenom">Prenom</label></div>
+                                            <label for="Nom" class="col-6">Nom</label>
                                         </td>
                                         <td>
-                                            <div class="col-6"><input type="text" name="Prenom" placeholder="Saisissez un prenom" required /></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="col-6"><label for="Email">Email</label></div>
-                                        </td>
-                                        <td>
-                                            <div class="col-6"><input type="email" name="Email" placeholder="Saisissez un email" required /></div>
+                                            <input type="text" name="Nom" class="col-6" placeholder="Saisissez un nom" required />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="col-6"><label for="Centre">Centre</label></div>
+                                            <label for="Prenom" class="col-6">Prenom</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="Prenom" class="col-6" placeholder="Saisissez un prenom" required />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="Email" class="col-6">Email</label>
+                                        </td>
+                                        <td>
+                                            <input type="email" name="Email" class="col-6" placeholder="Saisissez un email" required />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="Centre" class="col-6">Centre</label>
                                         </td>
                                         <td> <select name="Centre" required class="col-6">
                                                 <option value="">Saississez votre Centre</option>
@@ -107,10 +105,10 @@ if (@$_SESSION['auth'] == true) {
                                     </tr>
                                     <tr id="PromotionTR">
                                         <td>
-                                            <div class="col-6"><label for="Promotion">Promotion</label></div>
+                                            <label for="Promotion"class="col-6">Promotion</label>
                                         </td>
                                         <td>
-                                            <select name="Promotion" required="required">
+                                        <select name="Promotion" required class="col-6">
                                                 <option value="">Saississez votre Promotion</option>
                                                 <option value="CPIA1">CPI A1</option>
                                                 <option value="CPIA2-INFORMATIQUE">CPIA2-INFORMATIQUE</option>
@@ -134,18 +132,16 @@ if (@$_SESSION['auth'] == true) {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="col-6"><input type="submit" value="Envoyer" id="envoyer"></div>
+                                            <input type="submit" value="Envoyer" id="envoyer" class="col-6">
                                         </td>
                                         <td>
-                                            <div class="col-6"><input type="reset" value="Annuler" /></div>
+                                            <input type="reset" value="Annuler" class="col-6"/>
                                         </td>
                                     </tr>
-                                </div>
                             </table>
                         </div>
                     </fieldset>
                 </form>
-            </div>
         </div>
         <a class="btn btn-secondary col-1 bout fixed-top" style="margin:56px 0; width: 53px; height:53px; outline:none; text-decoration:none" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
             +
@@ -164,6 +160,7 @@ if (@$_SESSION['auth'] == true) {
                 </div>
             </div>
         </div>
+        <br>
     </main>
 
 <?php
