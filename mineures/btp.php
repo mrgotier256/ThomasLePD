@@ -8,7 +8,7 @@ require '../PHP/Class.php';
 <main>
     <div class="container" >
         <div class="row">
-            <article class="col-2" style="text-align:center;">Filtrage
+            <article class="col-2" style="text-align:left;">Filtrage
                 <form method="post" action="../recherche/RechercheStage.php">
                         <tr>
                             <div class="col-2">Entreprise</div>
@@ -61,7 +61,7 @@ require '../PHP/Class.php';
                         <button class="btn btn-outline-light" type="submit">Search</button>
                 </form>
             </article>
-            <article class="col-9" style="width:80%;">
+            <article class="col-9" style="text-align:center;width:80%;">
                
             </article>
         </div>
