@@ -18,7 +18,7 @@ if (@$_SESSION['auth'] == true) {
     <main>
         <div class="container case">
             <div class="row case">
-                <div class="text-center col-11">
+                <div class="text-center col-12">
                     <article class="prof">
                         <div style="width: 72%; margin:auto;">
                             <img src="../assets/images/entreprise.png"></img>

@@ -14,9 +14,9 @@ if (@$_SESSION['auth'] == true) {
     <main>
         <div class="container case">
             <div class="row case">
-                <div class="text-center col-11">
+                <div class="text-center col-12">
                     <article class="prof">
-                        <div style="width: 65%; margin:auto;">
+                        <div style="width: 45%; margin:auto;">
                             <img src="../assets/images/pilote.jpg"></img>
                             <br>
                             <div class="row" style="margin-top:50px;">
@@ -35,7 +35,7 @@ if (@$_SESSION['auth'] == true) {
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col-sm-3">Email</div>
+                                <dsniv class="col-sm-3">Email</div>
                                 <div class="col-sm-11"><input type="text" class="col-sm-6" disabled="disabled" placeholder="Centre" id="centre" required value="<?= $detail['centre'] ?>" /></div>
                             </div>
                             <br>

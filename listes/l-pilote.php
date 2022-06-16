@@ -12,7 +12,7 @@ if (@$_SESSION['auth'] == true) {
                 <a class="btn btn-secondary col-1 bout fixed-top" style="margin:56px 0; width: 53px; height:53px;" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                     +
                 </a>
-                <div class="text-center col-11">
+                <div class="text-center col-12">
                     <article class="prof">Liste des pilotes
                         <?php require '../PHP/Class.php';
                         $users = new Pilote();

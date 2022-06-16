@@ -14,15 +14,15 @@ if (@$_SESSION['auth'] == true) {
     <main>
         <div class="container case">
             <div class="row case">
-                <div class="text-center col-11">
+                <div class="text-center col-12">
                     <article class="prof">
-                        <div style="width: 65%; margin:auto;">
+                        <div style="width: 45%; margin:auto;">
                             <img src="../assets/images/delegue.jpg"></img>
                             <br>
-                            <div class="row" style="margin-top:50px;">
+                            <!-- <div class="row" style="margin-top:50px;">
                                 <div class="col-sm-3">ID_user</div>
                                 <?php echo' <div class="col-sm-8"><input type="id" class="col-sm-6" placeholder="ID_user" disabled="disabled" style="font-weight:bold;" id="id_user" value="'.$detail['id_user'].'" required /></div>'; ?>
-                            </div>
+                            </div> -->
                             <div class="row" style="margin-top:50px;">
                                 <div class="col-sm-3">Prénom</div>
                                 <?php echo' <div class="col-sm-8"><input type="id" class="col-sm-6" placeholder="Prénom" disabled="disabled" style="font-weight:bold;" id="prenom" value="'.$detail['prenom'].'" required /></div>'; ?>
