@@ -51,7 +51,9 @@ if (@$_SESSION['auth'] == true) {
             echo '<a class="navbar-brand pad" href="../profil/eleve.php">Profil</a> 
         <br></br> 
         <a href="../listes/l-offre.php">Liste des offres</a> 
-        <br></br>'; 
+        <br></br>
+        <a href="../Wishlist/wishlist.php">Wishlist</a> 
+        <br></br>';
         break; 
     } 
 } 
