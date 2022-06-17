@@ -738,30 +738,71 @@ class WishListe
         return $utilisateur->fetchAll();
     }
 
+    public function ifexist($identifiant, $idoffre)
+    {
+        $this->connexion();
+        $reqt = "SELECT * FROM wishlist WHERE id_eleve = 
+        (SELECT id_eleve FROM eleve WHERE id_user = ".$identifiant.") 
+        AND Nom_entreprise = 
+        (SELECT entreprise FROM offre_de_stage WHERE id_offre = ".$idoffre.");";
+
+        $result = $this->_connexion->query($reqt);
+        $VerifWish = $result->fetch(PDO::FETCH_ASSOC);
+        if ($VerifWish != false) 
+        {
+            return true;
+        }
+        else if ($VerifWish == false) 
+        {
+            return false;
+        }
+    }
+
     public function AddWishListe($identifiant, $idoffre)
     {
         $this->connexion();
-        $utilisateur = $this->_connexion->query("SET @idetu = (SELECT id_eleve FROM eleve WHERE id_user = ".$identifiant.");
-        SET @NomEntreprise = (SELECT entreprise FROM offre_de_stage WHERE id_offre = ".$idoffre.");
-        
-        INSERT INTO wishlist (id_eleve, Nom_entreprise) VALUES (@idetu, @NomEntreprise);
-        
-        SET @ID = (SELECT ID FROM wishlist WHERE id_eleve = @idetu AND Nom_entreprise = @NomEntreprise);
-        
-        INSERT INTO relation_wishlist_avec_stage (id_offre, ID) VALUES (@idetu, @ID);");
 
-        return $utilisateur->fetchAll();
+        $ifexist = $this->ifexist($identifiant, $idoffre);
+
+        if ($ifexist == false)
+        {
+            $stmt = $this->_connexion->prepare("SET @idetu = (SELECT id_eleve FROM eleve WHERE id_user = ".$identifiant.");
+            SET @NomEntreprise = (SELECT entreprise FROM offre_de_stage WHERE id_offre = ".$idoffre.");
+            
+            INSERT INTO wishlist (id_eleve, Nom_entreprise) VALUES (@idetu, @NomEntreprise);
+            
+            SET @ID = (SELECT ID FROM wishlist WHERE id_eleve = @idetu AND Nom_entreprise = @NomEntreprise);
+            
+            INSERT INTO relation_wishlist_avec_stage (id_offre, ID) VALUES (@idetu, @ID);");
+
+            echo ('Offre ajoutée à votre wishlist');
+            return $stmt->execute();
+        }
+        else{
+            echo ('Offre déja dans votre wishlist');
+        }
+        
     }
 
     public function delWishListe($identifiant, $idoffre)
     {
         $this->connexion();
-        $utilisateur = $this->_connexion->query("SET @idetu = (SELECT id_eleve FROM eleve WHERE id_user = ".$identifiant.");
-        SET @NomEntreprise = (SELECT entreprise FROM offre_de_stage WHERE id_offre = ".$idoffre.");
-        SET @ID = (SELECT ID FROM wishlist WHERE id_eleve = @idetu AND Nom_entreprise = @NomEntreprise);
 
-        DELETE FROM relation_wishlist_avec_stage WHERE ID = @ID;
-        DELETE FROM wishlist WHERE ID = @ID;");
-        return $utilisateur->fetchAll();
+        $ifexist = $this->ifexist($identifiant, $idoffre);
+
+        if ($ifexist != false)
+        {
+            $stmt = $this->_connexion->prepare("SET @idetu = (SELECT id_eleve FROM eleve WHERE id_user = ".$identifiant.");
+            SET @NomEntreprise = (SELECT entreprise FROM offre_de_stage WHERE id_offre = ".$idoffre.");
+            SET @ID = (SELECT ID FROM wishlist WHERE id_eleve = @idetu AND Nom_entreprise = @NomEntreprise);
+    
+            DELETE FROM relation_wishlist_avec_stage WHERE ID = @ID;
+            DELETE FROM wishlist WHERE ID = @ID;");
+            echo ('Offre supprimée de votre wishlist');
+            return $stmt->execute();
+        }
+        else{
+            echo ('Cette offre n\'est pas dans votre Wishlist');
+        }
     }
 }

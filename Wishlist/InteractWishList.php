@@ -1,9 +1,8 @@
 <?php
 session_start();
 include '../PHP/Class.php';
-$id_user = $_SESSION['user']['ID_UTILISATEUR'];
 
-echo ('<script>alert("dans la fonction")</script>');
+$id_user = $_SESSION['user']['id_user'];
 
 if (!$id_user)
 {
@@ -11,19 +10,19 @@ if (!$id_user)
 }
 
 
-if ($_POST['ToWishList'] == true) {
+if (@$_POST['ToWishList'] == true) {
     $co = new WishListe();
     $addWish = $co->AddWishListe(
-        $_POST['id_user'],
-        $_POST['id_offre ']
+        $id_user,
+        $_POST['id_offre']
     );
 
 }
 
-if ($_POST['DelFromWishList'] == True) {
+if (@$_POST['DelFromWishList'] == True) {
     $co = new WishListe();
     $deleteWish = $co->delWishListe(
-        $_POST['id_user'],
+        $id_user,
         $_POST['id_offre']
     );
 
