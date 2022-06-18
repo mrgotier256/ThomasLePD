@@ -26,23 +26,23 @@ if (@$_SESSION['auth'] == true) {
                             $lien = "";
                             // $lien =  $user['competences'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['duree'] . " " . " semaines" . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_fiche'] . " ";
                             $lien =  $user['competences'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['duree'] . " " . " semaines" . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y');
-                            ?>
-                            <div class="bdd">
-                            <a class="joie" href = "../mineures/offre.php?idOffre=<?= $user['id_offre'] ?>"><b><?= $lien?> </b></a>
-                            <button id="<?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="ToWishList(<?= $user['id_offre'] ?>)">Ajouter</button>
-                            <button id="<?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="DelFromWishList(<?= $user['id_offre'] ?>)"> Supprimer</button>                            
-                            </div><?php
-                        }
-                        $users->getOffre();
-
-                        $toutesLignes = (int)$users->compterOffre();
-                        $totoalPages = ceil($toutesLignes / 10);
-                        if (isset($_GET['page']) && !empty($_GET['page'])) {
-                            $currentPage = (int) strip_tags($_GET['page']) - 1;
-                        } else {
-                            $currentPage = 0;
-                        }
                         ?>
+                            <div class="bdd">
+                                <a class="joie" href="../mineures/offre.php?idOffre=<?= $user['id_offre'] ?>"><b><?= $lien ?> </b></a>
+                                <button id="<?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="ToWishList(<?= $user['id_offre'] ?>)">Ajouter</button>
+                                <button id="<?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="DelFromWishList(<?= $user['id_offre'] ?>)"> Supprimer</button>
+                            </div><?php
+                                }
+                                $users->getOffre();
+
+                                $toutesLignes = (int)$users->compterOffre();
+                                $totoalPages = ceil($toutesLignes / 10);
+                                if (isset($_GET['page']) && !empty($_GET['page'])) {
+                                    $currentPage = (int) strip_tags($_GET['page']) - 1;
+                                } else {
+                                    $currentPage = 0;
+                                }
+                                    ?>
 
                         <nav>
                             <ul class="pagination justify-content-center">
@@ -89,8 +89,8 @@ if (@$_SESSION['auth'] == true) {
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body" style="color:white;">
-            <?php
-                    include'../link_bar/link_bar.php'; 
+                <?php
+                include '../link_bar/link_bar.php';
                 ?>
                 <div>
                     <a class="deco" href="../deco/deconnexion.php">Deconnexion</a>
@@ -110,28 +110,25 @@ if (@$_SESSION['auth'] == true) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <script>
-function ToWishList(idoffre) {
-    if (idoffre) {
-        $.post('../Wishlist/InteractWishList.php',
-        {
-            id_offre: idoffre,
-            ToWishList: true,
-        }, function(data) {
-            alert(data);
-        });
-    } 
-}
-
-function DelFromWishList(idoffre) {
-    if (idoffre) {
-        $.post('../Wishlist/InteractWishList.php',
-        {
-            id_offre: idoffre,
-            DelFromWishList: true,
-        }, function(data) {
-            alert(data);
-        });
+    function ToWishList(idoffre) {
+        if (idoffre) {
+            $.post('../Wishlist/InteractWishList.php', {
+                id_offre: idoffre,
+                ToWishList: true,
+            }, function(data) {
+                console.log(data);
+            });
+        }
     }
-}
 
+    function DelFromWishList(idoffre) {
+        if (idoffre) {
+            $.post('../Wishlist/InteractWishList.php', {
+                id_offre: idoffre,
+                DelFromWishList: true,
+            }, function(data) {
+                console.log(data);
+            });
+        }
+    }
 </script>

@@ -14,6 +14,33 @@ if (@$_SESSION['auth'] == true) {
                 </a>
                 <div class="text-center col-12">
                     <article class="prof">Wishlist
+                        <?php require '../PHP/Class.php';
+                        $identifiant = $id_user = $_SESSION['user']['id_user'];
+
+                        $users = new WishListe();
+
+                        if (isset($_GET['page']) && !empty($_GET['page'])) {
+                            $page = $_GET['page'] - 1;
+                        } else {
+                            $page = 0;
+                        }
+
+                        foreach ($users->getWishListe($identifiant, $page * 10) as $user) {
+                            $date = new DateTime($user['date_offre']);
+                            $lien = "";
+                            $lien =  $user['id_offre'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['competences'] . " " . "|" . " " . $user['duree'] . " " . 'semaines' . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_fiche'] . " ";
+                            echo "<div class=\"bdd\">
+                             <a class=\"joie\" href = '../mineures/offre.php?idOffre=" . $user['id_offre'] . "'><b>" . $lien . "</b></a>
+                            </div>";
+                        }
+                        $users->getWishListe($identifiant);
+                        $toutesLignes = (int)$users->getWishListe($identifiant);
+                        $totoalPages = ceil($toutesLignes / 10);
+                        if (isset($_GET['page']) && !empty($_GET['page'])) {
+                            $currentPage = (int) strip_tags($_GET['page']) - 1;
+                        } else {
+                            $currentPage = 0;
+                        } ?>
 
 
 
@@ -58,7 +85,7 @@ if (@$_SESSION['auth'] == true) {
             </div>
             <div class="offcanvas-body" style="color:white;">
                 <?php
-                    include'../link_bar/link_bar.php'; 
+                include '../link_bar/link_bar.php';
                 ?>
                 <div>
                     <a class="deco" href="../deco/deconnexion.php">Deconnexion</a>
