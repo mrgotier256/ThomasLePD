@@ -24,56 +24,61 @@ if (@$_SESSION['auth'] == true) {
                         } else {
                             $page = 0;
                         }
+                        $Wishlist = $users->getWishListe($identifiant);
 
-                        foreach ($users->getWishListe($identifiant, $page * 10) as $user) {
-                            $date = new DateTime($user['date_offre']);
-                            $lien = "";
-                            $lien =  $user['id_offre'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['competences'] . " " . "|" . " " . $user['duree'] . " " . 'semaines' . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_fiche'] . " ";
-                            echo "<div class=\"bdd\">
-                             <a class=\"joie\" href = '../mineures/offre.php?idOffre=" . $user['id_offre'] . "'><b>" . $lien . "</b></a>
-                            </div>";
-                        }
-                        $users->getWishListe($identifiant);
-                        $toutesLignes = (int)$users->getWishListe($identifiant);
-                        $totoalPages = ceil($toutesLignes / 10);
-                        if (isset($_GET['page']) && !empty($_GET['page'])) {
-                            $currentPage = (int) strip_tags($_GET['page']) - 1;
+                        if ($Wishlist == false) {
+                            echo '<div class=\"bdd\"><br> <h2> Votre Wishlist est vide </h2> <div>';
                         } else {
-                            $currentPage = 0;
-                        } ?>
+                            foreach ($Wishlist as $user) {
+                                $date = new DateTime($user['date_offre']);
+                                $lien = "";
+                                $lien =  $user['id_offre'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['competences'] . " " . "|" . " " . $user['duree'] . " " . 'semaines' . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_fiche']
+                        ?>
+                                <div class="bdd">
+                                    <b style="color: black"><?= $lien ?></b></a>
+                                    <button id=" <?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="DelFromWishList(<?= $user['id_offre'] ?>)"> Supprimer</button>
 
-
-
-                        <nav>
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item <?php if ($page <= 0) {
-                                                            echo 'disabled';
-                                                        } ?>">
-                                    <a class="page-link" href="<?php if ($page < 0) {
-                                                                    echo '#';
-                                                                } else {
-                                                                    echo "?page=" . ($currentPage - 1);
-                                                                } ?>">Precedent</a>
-                                </li>
-                                <?php for ($i = 1; $i <= $totoalPages; $i++) : ?>
-                                    <li class="page-item <?php if (($page + 1) == $i) {
-                                                                echo 'active';
+                                </div><?php
+                                    }
+                                    $users->getWishListe($identifiant);
+                                    $toutesLignes = (int)$users->getWishListe($identifiant);
+                                    $totoalPages = ceil($toutesLignes / 10);
+                                    if (isset($_GET['page']) && !empty($_GET['page'])) {
+                                        $currentPage = (int) strip_tags($_GET['page']) - 1;
+                                    } else {
+                                        $currentPage = 0;
+                                    }
+                                        ?> <nav>
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item <?php if ($page <= 0) {
+                                                                echo 'disabled';
                                                             } ?>">
-                                        <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
+                                        <a class="page-link" href="<?php if ($page < 0) {
+                                                                        echo '#';
+                                                                    } else {
+                                                                        echo "?page=" . ($currentPage - 1);
+                                                                    } ?>">Precedent</a>
                                     </li>
-                                <?php endfor; ?>
-                                <li class="page-item <?php if (($page + 1) >= $totoalPages) {
-                                                            echo 'disabled';
-                                                        } ?>">
-                                    <a class="page-link" href="<?php if ($page >= $totoalPages) {
-                                                                    echo '#';
-                                                                } else {
-                                                                    echo "?page=" . ($currentPage + 2);
-                                                                } ?>">Suivant</a>
-                                </li>
-                            </ul>
-                        </nav>
-
+                                    <?php for ($i = 1; $i <= $totoalPages; $i++) : ?>
+                                        <li class="page-item <?php if (($page + 1) == $i) {
+                                                                    echo 'active';
+                                                                } ?>">
+                                            <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
+                                        </li>
+                                    <?php endfor; ?>
+                                    <li class="page-item <?php if (($page + 1) >= $totoalPages) {
+                                                                echo 'disabled';
+                                                            } ?>">
+                                        <a class="page-link" href="<?php if ($page >= $totoalPages) {
+                                                                        echo '#';
+                                                                    } else {
+                                                                        echo "?page=" . ($currentPage + 2);
+                                                                    }  ?>">Suivant</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        <?php
+                        } ?>
                     </article>
                 </div>
             </div>
@@ -101,3 +106,17 @@ if (@$_SESSION['auth'] == true) {
     exit;
 }
 ?>
+
+<script>
+    function DelFromWishList(idoffre) {
+        if (idoffre) {
+            $.post('../Wishlist/InteractWishList.php', {
+                id_offre: idoffre,
+                DelFromWishList: true,
+            }, function(data) {
+                alert(data);
+                location.reload();
+            });
+        }
+    }
+</script>

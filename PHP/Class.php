@@ -734,14 +734,28 @@ class WishListe
     {
         $this->connexion();
 
-        $utilisateur = $this->_connexion->query(
-            "SELECT * FROM offre_de_stage 
-            INNER JOIN wishlist 
-            ON wishlist.id_offre = offre_de_stage.id_offre 
-            WHERE id_eleve = (SELECT id_eleve FROM eleve WHERE id_user = $identifiant)"
-        );
+        // $utilisateur = $this->_connexion->query(
+        //     "SELECT * FROM offre_de_stage 
+        //     INNER JOIN wishlist 
+        //     ON wishlist.id_offre = offre_de_stage.id_offre 
+        //     WHERE id_eleve = (SELECT id_eleve FROM eleve WHERE id_user = $identifiant)"
+        // );
 
-        return $utilisateur->fetchAll();
+        // return $utilisateur->fetchAll();
+
+        $reqt = "SELECT * FROM offre_de_stage 
+        INNER JOIN wishlist 
+        ON wishlist.id_offre = offre_de_stage.id_offre 
+        WHERE id_eleve = (SELECT id_eleve FROM eleve WHERE id_user = $identifiant)";
+
+        $result = $this->_connexion->query($reqt);
+        $VerifWish = $result->fetchall();
+
+        if ($VerifWish != false) {
+            return $VerifWish;
+        } else if ($VerifWish == false) {
+            return false;
+        }
     }
 
 
