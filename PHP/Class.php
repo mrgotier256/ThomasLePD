@@ -730,14 +730,16 @@ class WishListe
         }
     }
 
-    public function getWishListe($identifiant, $offset = 0)
+    public function getWishListe($identifiant)
     {
         $this->connexion();
-        $utilisateur = $this->_connexion->query("SELECT * FROM offre_de_stage 
-        INNER JOIN relation_wishlist_avec_stage 
-        on relation_wishlist_avec_stage.id_offre = offre_de_stage.id_offre 
-        INNER JOIN wishlist on wishlist.ID =  relation_wishlist_avec_stage.ID 
-        WHERE id_eleve = (SELECT id_eleve FROM eleve WHERE id_user = $identifiant LIMIT $offset,10);");
+
+        $utilisateur = $this->_connexion->query(
+            "SELECT * FROM offre_de_stage 
+            INNER JOIN wishlist 
+            ON wishlist.id_offre = offre_de_stage.id_offre 
+            WHERE id_eleve = (SELECT id_eleve FROM eleve WHERE id_user = $identifiant)"
+        );
 
         return $utilisateur->fetchAll();
     }
@@ -746,19 +748,8 @@ class WishListe
     public function ifexist($identifiant, $idoffre)
     {
         $this->connexion();
-        // $reqt = "SELECT * FROM wishlist WHERE id_eleve = 
-        // (SELECT id_eleve FROM eleve WHERE id_user = " . $identifiant . ") 
-        // AND Nom_entreprise = 
-        // (SELECT entreprise FROM offre_de_stage WHERE id_offre = " . $idoffre . ");";
 
-        $reqt = "SELECT * from eleve INNER JOIN wishlist 
-        ON wishlist.id_eleve = eleve.id_eleve INNER JOIN 
-        relation_wishlist_avec_stage 
-        ON relation_wishlist_avec_stage.ID = wishlist.ID 
-        INNER JOIN  offre_de_stage 
-        ON offre_de_stage.id_offre = relation_wishlist_avec_stage.id_offre 
-        WHERE wishlist.id_eleve = (SELECT id_eleve FROM eleve WHERE id_user = " . $identifiant . ")  
-        AND relation_wishlist_avec_stage.id_offre = " . $idoffre . ";";
+        $reqt = "SELECT * FROM wishlist WHERE id_eleve = (SELECT id_eleve FROM eleve WHERE id_user = $identifiant) AND id_offre = $idoffre;";
 
         $result = $this->_connexion->query($reqt);
         $VerifWish = $result->fetch(PDO::FETCH_ASSOC);
@@ -777,14 +768,8 @@ class WishListe
         $ifexist = $this->ifexist($identifiant, $idoffre);
 
         if ($ifexist == false) {
-            $stmt = $this->_connexion->prepare("SET @idetu = (SELECT id_eleve FROM eleve WHERE id_user = " . $identifiant . ");
-            SET @NomEntreprise = (SELECT entreprise FROM offre_de_stage WHERE id_offre = " . $idoffre . ");
-            
-            INSERT INTO wishlist (id_eleve, Nom_entreprise) VALUES (@idetu, @NomEntreprise);
-            
-            SET @ID = (SELECT ID FROM wishlist WHERE id_eleve = @idetu AND Nom_entreprise = @NomEntreprise);
-            
-            INSERT INTO relation_wishlist_avec_stage (id_offre, ID) VALUES (" . $idoffre . ", @ID);");
+            $stmt = $this->_connexion->prepare("INSERT INTO wishlist (id_eleve, id_offre) 
+            VALUES ((SELECT id_eleve FROM eleve WHERE id_user = $identifiant), $idoffre);");
 
             echo ('Offre ajoutée à votre wishlist');
             return $stmt->execute();
@@ -800,45 +785,10 @@ class WishListe
         $ifexist = $this->ifexist($identifiant, $idoffre);
 
         if ($ifexist != false) {
-            // $stmt = $this->_connexion->prepare("SET @idetu = (SELECT id_eleve FROM eleve WHERE id_user = " . $identifiant . ");
-            // SET @NomEntreprise = (SELECT entreprise FROM offre_de_stage WHERE id_offre = " . $idoffre . ");
-            // SET @ID = (SELECT ID FROM wishlist WHERE id_eleve = @idetu AND Nom_entreprise = @NomEntreprise);
 
-            // DELETE FROM relation_wishlist_avec_stage WHERE ID = @ID;
-            // DELETE FROM wishlist WHERE ID = @ID;");
+            $stmt = $this->_connexion->prepare("DELETE FROM wishlist WHERE id_eleve = 
+            (SELECT id_eleve FROM eleve WHERE id_user = $identifiant) AND id_offre = $idoffre;");
 
-            $stmt = $this->_connexion->prepare("
-            SET @IdEleve = (SELECT wishlist.id_eleve from eleve INNER JOIN wishlist 
-                ON wishlist.id_eleve = eleve.id_eleve INNER JOIN 
-                relation_wishlist_avec_stage 
-                ON relation_wishlist_avec_stage.ID = wishlist.ID 
-                INNER JOIN  offre_de_stage 
-                ON offre_de_stage.id_offre = relation_wishlist_avec_stage.id_offre 
-                WHERE wishlist.id_eleve = (SELECT id_eleve FROM eleve WHERE id_user = " . $identifiant . ")  
-                AND relation_wishlist_avec_stage.id_offre = " . $idoffre . ");
-    
-            SET @ID = (SELECT wishlist.ID from eleve INNER JOIN wishlist 
-                ON wishlist.id_eleve = eleve.id_eleve INNER JOIN 
-                relation_wishlist_avec_stage 
-                ON relation_wishlist_avec_stage.ID = wishlist.ID 
-                INNER JOIN  offre_de_stage 
-                ON offre_de_stage.id_offre = relation_wishlist_avec_stage.id_offre 
-                WHERE wishlist.id_eleve = (SELECT id_eleve FROM eleve WHERE id_user = " . $identifiant . ")  
-                AND relation_wishlist_avec_stage.id_offre = " . $idoffre . ");
-    
-            SET @IdOffre = (SELECT offre_de_stage.id_offre from eleve INNER JOIN wishlist 
-                ON wishlist.id_eleve = eleve.id_eleve INNER JOIN 
-                relation_wishlist_avec_stage 
-                ON relation_wishlist_avec_stage.ID = wishlist.ID 
-                INNER JOIN  offre_de_stage 
-                ON offre_de_stage.id_offre = relation_wishlist_avec_stage.id_offre 
-                WHERE wishlist.id_eleve = (SELECT id_eleve FROM eleve WHERE id_user = " . $identifiant . ")  
-                AND relation_wishlist_avec_stage.id_offre = " . $idoffre . ");
-
-            DELETE FROM relation_wishlist_avec_stage WHERE ID = @ID AND id_offre = @IdOffre;
-            DELETE FROM wishlist WHERE ID = @ID AND id_eleve = @IdEleve;");
-
-            echo (var_dump($stmt));
             echo ('Offre supprimée de votre wishlist');
             return $stmt->execute();
         } else {

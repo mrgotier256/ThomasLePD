@@ -44,7 +44,7 @@ if (@$_SESSION['auth'] == true) {
 
 
 
-                        <!-- <nav>
+                        <nav>
                             <ul class="pagination justify-content-center">
                                 <li class="page-item <?php if ($page <= 0) {
                                                             echo 'disabled';
@@ -72,7 +72,7 @@ if (@$_SESSION['auth'] == true) {
                                                                 } ?>">Suivant</a>
                                 </li>
                             </ul>
-                        </nav> -->
+                        </nav>
 
                     </article>
                 </div>

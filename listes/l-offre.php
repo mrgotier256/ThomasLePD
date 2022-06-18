@@ -116,7 +116,7 @@ if (@$_SESSION['auth'] == true) {
                 id_offre: idoffre,
                 ToWishList: true,
             }, function(data) {
-                console.log(data);
+                alert(data);
             });
         }
     }
@@ -127,7 +127,7 @@ if (@$_SESSION['auth'] == true) {
                 id_offre: idoffre,
                 DelFromWishList: true,
             }, function(data) {
-                console.log(data);
+                alert(data);
             });
         }
     }
