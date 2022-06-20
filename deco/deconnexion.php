@@ -5,7 +5,6 @@ if (isset($_SESSION['DoneDeleteCookie']) && @$_SESSION['DoneDeleteCookie'] == tr
 {
     $_SESSION = array();
     session_destroy();
-    //header("Location:../mainpage/mainPage.php");
     header("Location:../index.php");
 }
 else
