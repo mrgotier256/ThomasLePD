@@ -13,6 +13,19 @@ if (@$_SESSION['auth'] == true) {
                     <fieldset>
                         <legend>Modification d'une entreprise</legend>
                         <div class="row">
+                            <div class="col-6" style="padding:7px; padding-bottom:7px;"><label for="ID_ent">Entreprise</label></div>
+                            <select name="ID_ent" style="width:165px;">
+                                <option value="">Entreprise</option>
+                                <?php
+                                include '../PHP/Class.php';
+                                $NomEntreprises = new Entreprise;
+                                foreach ($NomEntreprises->getEntrepriseSansLimite() as $NomEntreprise) {
+                                ?>
+                                    <option value="<?= $NomEntreprise['id_fiche'] ?>"><?= $NomEntreprise['Nom'] ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
 
                             <div class="col-6" style="padding:7px;"><label for="Nom">Nom</label></div>
                             <div class="col-6"><input type="text" name="nom" placeholder="Saisissez votre nom" required /></div>
