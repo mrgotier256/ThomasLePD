@@ -60,7 +60,7 @@ include '../base/header.php';
     <!------------ Début affichage des offres de stage ------------>
     <div class="text-center" style="width:76%;margin:auto;">
         <section>
-            <h5><strong>Offres de stage</strong></h5>
+            <h5><strong>Offres de stage </strong></h5>
             <?php require '../PHP/Class.php';
 
             $users = new Offre();

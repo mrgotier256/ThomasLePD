@@ -52,6 +52,15 @@ class LoginRepository
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    public function loginCookie($iduser)
+    {
+        $this->connexion();
+        $stmt = $this->_connexion->prepare("SELECT * FROM user WHERE id_user= ?");
+        $stmt->bindValue(1, $iduser, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
 
 // ######################### Offre de stage ##########################
