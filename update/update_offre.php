@@ -10,7 +10,7 @@ if (@$_SESSION['auth'] == true) {
     <main>
         <div class="container">
             <div class="row">
-                <form action="./crea_offre.php" method="post" class="text-center">
+                <form action="./update/upd_offre_et_entreprise.php" method="post" class="text-center">
                     <fieldset>
                         <legend>Modification d'une offre de stage</legend>
                         <div class="row">
@@ -42,6 +42,8 @@ if (@$_SESSION['auth'] == true) {
 
                             <div class="col-6" style="padding:7px;"><label for="remu">Rémunération</label></div>
                             <div class="col-6"><input type="number" name="remu" placeholder="Saisissez la rémunération proposée" required /></div>
+                          
+                            <input id="updateOffre" name="updateOffre" type="radio" value="1" style="visibility: hidden" checked>
 
                             <br><br>
                             <div class="col-3"></div>

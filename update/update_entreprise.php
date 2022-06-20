@@ -9,13 +9,13 @@ if (@$_SESSION['auth'] == true) {
     <main>
         <div class="container">
             <div class="row">
-                <form action="./crea_entreprise.php" method="post" class="text-center">
+                <form action="./upd_offre_et_entreprise.php" method="post" class="text-center">
                     <fieldset>
                         <legend>Modification d'une entreprise</legend>
                         <div class="row">
-                            <div class="col-6" style="padding:7px; padding-bottom:7px;"><label for="ID_ent">Entreprise</label></div>
-                            <select name="ID_ent" style="width:165px;">
-                                <option value="">Entreprise</option>
+                            <div class="col-6" style="padding:7px; padding-bottom:7px;"><label for="id_fiche">Entreprise*</label></div>
+                            <select name="id_fiche" style="width:165px;" required>
+                                <option value="">Entreprise*</option>
                                 <?php
                                 include '../PHP/Class.php';
                                 $NomEntreprises = new Entreprise;
@@ -27,29 +27,31 @@ if (@$_SESSION['auth'] == true) {
                                 ?>
                             </select>
 
-                            <div class="col-6" style="padding:7px;"><label for="Nom">Nom</label></div>
-                            <div class="col-6"><input type="text" name="nom" placeholder="Saisissez votre nom" required /></div>
+                            <div class="col-6" style="padding:7px;"><label for="comp">Nouveau Nom</label></div>
+                            <div class="col-6"><input type="text" name="NewNom" placeholder="Saisissez le nouveau nom" /></div>
 
-                            <div class="col-6" style="padding:7px;"><label for="Secteur">Secteur d'activité</label></div>
-                            <div class="col-6"><input type="text" name="prenom" placeholder="Saisissez le secteur d'activité" required /></div>
+                            <div class="col-6" style="padding:7px;"><label for="comp">Secteur d'activité</label></div>
+                            <div class="col-6"><input type="text" name="SecteurAct" placeholder="Saisissez le Secteur d'activité"  /></div>
 
-                            <div class="col-6" style="padding:7px;"><label for="Localite">Localité</label></div>
-                            <div class="col-6"><input type="text" name="localite" placeholder="Saisissez la localité" required /></div>
+                            <div class="col-6" style="padding:7px;"><label for="loca">Localité</label></div>
+                            <div class="col-6"><input type="text" name="localite" placeholder="Saisissez une localité" /></div>
 
-                            <div class="col-6" style="padding:7px;"><label for="NbStag">Nombre de stagiaire</label></div>
-                            <div class="col-6"><input type="text" name="nbStag" placeholder="Saisissez le nombre de stagiaire(s)" required /></div>
+                            <div class="col-6" style="padding:7px;"><label for="dur">Nombre de stagiaire</label></div>
+                            <div class="col-6"><input type="number" name="NbrStagiaire" min="0" placeholder="Saisissez le nombre de stagiaire"  /></div>
 
-                            <div class="col-6" style="padding:7px;"><label for="ValStag">Evaluation du stagiaire</label></div>
-                            <div class="col-6"><input type="number" name="valStag" placeholder="Saisissez l'évaluation par le stagiaire" required /></div>
+                            <div class="col-6" style="padding:7px;"><label for="em">Evaluation du stagiaire</label></div>
+                            <div class="col-6"><input type="number" step="any" name="EvalStagiaire" min="0" max="5" placeholder="Saisissez l'évaluation stagiaire" /></div>
 
-                            <div class="col-6" style="padding:7px;"><label for="ConfPi">Confiance du Pilote</label></div>
-                            <div class="col-6"><input type="number" name="confPi" placeholder="Saisissez la confiance du pilote" required /></div>
+                            <div class="col-6" style="padding:7px;"><label for="remu">Confiance du Pilot</label></div>
+                            <div class="col-6"><input type="number" step="any" name="EvalStagiaire" min="0" max="5" placeholder="Saisissez l'évaluation pilote"  /></div>
+                          
+                            <input id="updateEntreprise" name="updateEntreprise" type="radio" value="1" style="visibility: hidden" checked>
+
                             <br><br>
                             <div class="col-3"></div>
                             <div class="col-3"><input type="submit" value="Envoyer" id="envoyer" /></div>
                             <div class="col-3"><input type="reset" value="Annuler" /></div>
                             <div class="col-3">
-                            </div>
                         </div>
                     </fieldset>
                 </form>

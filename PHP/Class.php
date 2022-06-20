@@ -134,7 +134,6 @@ class Offre
         " . $this->_connexion->quote($remuneration) . ", 
         " . $this->_connexion->quote($id_fiche) . "
         , " . $this->_connexion->quote($date_offre) . ")");
-        var_dump($stmt);
         return $stmt->execute();
     }
 
@@ -232,11 +231,76 @@ class Entreprise
         return $stmt->execute();
     }
 
-    public function UpEntreprise()
+    public function UpEntreprise($idfiche, $NewNom, $secteur, $localite, $nbr_stagiaire, $evaluation, $confiance)
     {
         $this->connexion();
-        $utilisateur = $this->_connexion->query("");
-        return $utilisateur->fetch();
+        if (empty($NewNom) && empty($secteur) && empty($localite) && empty($nbr_stagiaire) && empty($evaluation) && empty($confiance)) {
+            header('Location: ../update/update_entreprise.php');
+        }
+
+        $reqtpromo = "";
+
+        if (empty($NewNom)) {
+            $U_Nom = "";
+            $NewNom = "";
+        } else {
+            $U_Nom = 'Nom =';
+            $NewNom = $this->_connexion->quote($NewNom) . ',';
+        }
+
+        if (empty($secteur)) {
+            $U_Secteur_activite = "";
+            $secteur = "";
+        } else {
+            $U_Secteur_activite = 'Secteur_activite =';
+            $secteur = $this->_connexion->quote($secteur) . ',';
+        }
+
+        if (empty($localite)) {
+            $U_Localite = "";
+            $localite = "";
+        } else {
+            $U_Localite = 'Localite =';
+            $localite = $this->_connexion->quote($localite) . ',';
+        }
+
+        if (empty($nbr_stagiaire)) {
+            $U_Nb_stagiaire_cesi = "";
+            $nbr_stagiaire = "";
+        } else {
+            $U_Nb_stagiaire_cesi = 'Nb_stagiaire_cesi =';
+            $nbr_stagiaire = $this->_connexion->quote($nbr_stagiaire) . ',';
+        }
+
+        if (empty($evaluation)) {
+            $U_evaluation_stagiaire = "";
+            $evaluation = "";
+        } else {
+            $U_evaluation_stagiaire = 'evaluation_stagiaire =';
+            $evaluation = $this->_connexion->quote($evaluation) . ',';
+        }
+
+        if (empty($confiance)) {
+            $U_confiance_pilote = "";
+            $confiance = "";
+        } else {
+            $U_confiance_pilote = 'confiance_pilote =';
+            $confiance = $this->_connexion->quote($confiance) . ',';
+        }
+
+        $stmt = $this->_connexion->prepare("SET @IdFiche = ".$this->_connexion->quote($idfiche).";
+
+        UPDATE fiche_entreprise SET " . $U_Nom . " " . $NewNom . " " . $U_Secteur_activite . " " . $secteur . " 
+        " . $U_Localite . " " . $localite . " " . $U_Nb_stagiaire_cesi . " " . $nbr_stagiaire . "
+        " . $U_evaluation_stagiaire . " " . $evaluation . " " . $U_confiance_pilote . " " . $confiance . " id_fiche = @IdFiche 
+        WHERE id_fiche = @IdFiche;
+        
+        UPDATE offre_de_stage SET 
+        localite = (SELECT localite FROM fiche_entreprise WHERE id_fiche = @IdFiche), 
+        entreprise = (SELECT Nom FROM fiche_entreprise WHERE id_fiche = @IdFiche) 
+        WHERE id_fiche = @IdFiche;");
+        var_dump($stmt);
+        return $stmt->execute();
     }
 }
 
