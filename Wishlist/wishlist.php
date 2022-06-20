@@ -32,12 +32,15 @@ if (@$_SESSION['auth'] == true) {
                             foreach ($Wishlist as $user) {
                                 $date = new DateTime($user['date_offre']);
                                 $lien = "";
-                                $lien =  $user['id_offre'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['competences'] . " " . "|" . " " . $user['duree'] . " " . 'semaines' . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_fiche']
+                                $lien =  $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['competences'] . " " . "|" . " " . $user['duree'] . " " . 'semaines' . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y');
                         ?>
                                 <div class="bdd">
-                                    <b style="color: black"><?= $lien ?></b></a>
+                                    <b style="color: black">
+                                        <?= 
+                                        "<a class=\"joie\" href = '../mineures/offre.php?idOffre=" . $user['id_offre'] . "'><b>" . $lien . "</b></a>" 
+                                        ?>
+                                    </b>
                                     <button id=" <?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="DelFromWishList(<?= $user['id_offre'] ?>)"> Supprimer</button>
-
                                 </div><?php
                                     }
                                     $users->getWishListe($identifiant);

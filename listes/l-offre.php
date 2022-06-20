@@ -76,10 +76,16 @@ if (@$_SESSION['auth'] == true) {
                         <div id="ajax"> </div>
 
                     </article>
-                    <form method="get" action="../delete/delete_offre.php">
-                        <span><input type="id" name="id_offre" placeholder="Saisissez l\'id" required /></span>
+                    <?php 
+            switch ($_SESSION['user']['ID_Role']) {
+            case 1:
+                echo'<form method="get" action="../delete/delete_offre.php">
+                        <span><input type="id" name="id_offre" placeholder="Saisissez l\'id de l\'offre" required /></span>
                         <span><input type="submit" value="Supprimer" name="supprimer" /></span>
-                    </form>
+                    </form>';
+                    break;
+                }
+                    ?>
                 </div>
             </div>
         </div>
