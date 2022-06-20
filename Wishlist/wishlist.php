@@ -35,10 +35,10 @@ if (@$_SESSION['auth'] == true) {
                                 $lien =  $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['competences'] . " " . "|" . " " . $user['duree'] . " " . 'semaines' . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y');
                         ?>
                                 <div class="bdd">
-                                    <b style="color: black"><?= 
-                                            "<a class=\"joie\" href = '../mineures/offre.php?idOffre=" . $user['id_offre'] . "'>
-                                            <b>" . $lien . "</b>
-                                            </a>" ?>
+                                    <b style="color: black">
+                                        <?= 
+                                        "<a class=\"joie\" href = '../mineures/offre.php?idOffre=" . $user['id_offre'] . "'><b>" . $lien . "</b></a>" 
+                                        ?>
                                     </b>
                                     <button id=" <?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="DelFromWishList(<?= $user['id_offre'] ?>)"> Supprimer</button>
                                 </div><?php
