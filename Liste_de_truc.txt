@@ -1,12 +1,8 @@
-Faire la wish liste : en cours
-
 Afficher les offres postulée par l'élève
 
 Avancement eleve 6 étapes
 
 Liens en général à faire plus beau
-
-Gérer les cookies
 
 PWA
 
