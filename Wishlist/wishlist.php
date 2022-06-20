@@ -39,9 +39,13 @@ if (@$_SESSION['auth'] == true) {
                                         <?= 
                                         "<a class=\"joie\" href = '../mineures/offre.php?idOffre=" . $user['id_offre'] . "'><b>" . $lien . "</b></a>" 
                                         ?>
-                                    </b>
+                                    </b><?php
+                                    if ($_SESSION['user']['ID_Role'] == 4)
+                                    { ?>
                                     <button id=" <?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="DelFromWishList(<?= $user['id_offre'] ?>)"> Supprimer</button>
-                                </div><?php
+                                </div>
+                                <?php } ?>
+                                <?php
                                     }
                                     $users->getWishListe($identifiant);
                                     $toutesLignes = (int)$users->getWishListe($identifiant);

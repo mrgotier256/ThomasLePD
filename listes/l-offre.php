@@ -21,7 +21,8 @@ if (@$_SESSION['auth'] == true) {
                         } else {
                             $page = 0;
                         }
-                        foreach ($users->getOffre($page * 10) as $user) {
+                        foreach ($users->getOffre($page * 10) as $user) 
+                        {
                             $date = new DateTime($user['date_offre']);
                             $lien = "";
                             // $lien =  $user['competences'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['duree'] . " " . " semaines" . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_fiche'] . " ";
@@ -29,10 +30,15 @@ if (@$_SESSION['auth'] == true) {
                         ?>
                             <div class="bdd">
                                 <a class="joie" href="../mineures/offre.php?idOffre=<?= $user['id_offre'] ?>"><b><?= $lien ?> </b></a>
+                                <?php
+                                if ($_SESSION['user']['ID_Role'] == 4)
+                                {
+                                 ?>
                                 <button id="<?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="ToWishList(<?= $user['id_offre'] ?>)">Ajouter</button>
                                 <button id="<?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="DelFromWishList(<?= $user['id_offre'] ?>)"> Supprimer</button>
-                            </div><?php
-                                }
+                                <?php } ?>
+                            </div>
+                            <?php }
                                 $users->getOffre();
 
                                 $toutesLignes = (int)$users->compterOffre();
