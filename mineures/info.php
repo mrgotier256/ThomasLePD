@@ -77,24 +77,6 @@ require '../PHP/Class.php';
                 }
                 $users->getOffre();
 
-                // $names = new Offre();
-                // foreach ($names->FiltrageNom('nom') as $name) {
-                //     $date = new DateTime($user['date_offre']);
-                //     $lien = "";
-                //     $lien =  $user['competences'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['duree'] . " " . " semaines" . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_fiche'] . " ";
-                //     echo "<div class=\"bdd\"><a class=\"joie\" href = './offre.php?idOffre=" . $user['id_offre'] . "'><b>" . $lien . "</b></a></div>";
-                // }
-                // $names->FiltrageNom('nom');
-
-                // $names = new Offre();
-                // foreach ($names->FiltrageCompetence($_GET['competence']) as $name) {
-                //     $date = new DateTime($user['date_offre']);
-                //     $lien = "";
-                //     $lien =  $user['competences'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['duree'] . " " . " semaines" . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_fiche'] . " ";
-                //     echo "<div class=\"bdd\"><a class=\"joie\" href = './offre.php?idOffre=" . $user['id_offre'] . "'><b>" . $lien . "</b></a></div>";
-                // }
-                // $names->FiltrageCompetence($_GET['competence']);
-
                 $toutesLignes = (int)$users->compterOffre();
                 $totoalPages = ceil($toutesLignes / 10);
                 if (isset($_GET['page']) && !empty($_GET['page'])) {
