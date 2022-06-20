@@ -6,6 +6,15 @@ include '../base/header.php';
 
 <main>
     <div>
+        <?php 
+        if (@$_SESSION['auth'] == true) 
+        { ?>
+            <a class="btn btn-secondary col-1 bout fixed-top" style="margin:56px 0; width: 53px; height:53px;" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                +
+            </a>
+        <?php 
+        } ?>
+
         <!------------ Début carroussel ------------>
         <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -111,6 +120,24 @@ include '../base/header.php';
         </section>
     </div>
     <!------------ Fin affichage des offres de stage ------------>
+    <?php 
+    if (@$_SESSION['auth'] == true) { ?>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="width:200px;background-color:black;">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel" style="color:white;">Menu</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body" style="color:white;">
+                <?php
+                include '../link_bar/link_bar.php';
+                ?>
+                <div>
+                    <a class="deco" href="../deco/deconnexion.php">Deconnexion</a>
+                </div>
+            </div>
+            <div id="ajax"> </div>
+        </div>
+    <?php }   ?>
 </main>
 
 <?php include '../base/footer.php'; ?>
