@@ -1,4 +1,9 @@
-<?php session_start();?>
+<?php 
+if (@$_SESSION['auth'] != true) {
+session_start();
+}
+?>
+
 </head>
 
 <body>
