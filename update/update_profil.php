@@ -25,12 +25,15 @@ if (@$_SESSION['auth'] == true) {
                         <div class="row">
                             <table>
                                 <tr>
-                                    <div class="col-2"><label for="Pilote">Pilote</label></div>
-                                    <div class="col-2"><input type="radio" id="Pilote" name="Role" value="2" required onChange="griserpromo()" /></div>
                                     <div class="col-2"><label for="Eleve">Eleve</label></div>
                                     <div class="col-2"><input type="radio" id="Eleve" name="Role" value="4" required onChange="griserpromo()" /></div>
                                     <div class="col-2"><label for="Delegue">Delegue</label></div>
                                     <div class="col-2"><input type="radio" id="Delegue" name="Role" value="3" required onChange="griserpromo()" /></div>
+                                    <?php if ($_SESSION['user']['ID_Role'] != 2) 
+                                { ?>
+                                    <div class="col-2"><label for="Pilote">Pilote</label></div>
+                                    <div class="col-2"><input type="radio" id="Pilote" name="Role" value="2" required onChange="griserpromo()" /></div>
+                                <?php } ?>
                                 </tr>
                                 <div style="padding-left:200px">
                                     <tr>
