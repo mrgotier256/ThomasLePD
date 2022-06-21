@@ -25,9 +25,13 @@ if (@$_SESSION['auth'] == true) {
                         {
                             $date = new DateTime($user['date_offre']);
                             $lien = "";
-                            // $lien =  $user['competences'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['duree'] . " " . " semaines" . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_fiche'] . " ";
-                            $lien =  $user['id_offre'] . " " . "|" . " " . $user['competences'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['duree'] . " " . " semaines" . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y');
-                        ?>
+                            if (@$_SESSION['auth'] == true && @$_SESSION['user']['ID_Role'] == 1) {
+                                $lien = $user['id_offre'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['competences'] . " " . "|" . " " . $user['duree'] . " " . 'semaines' . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_fiche'];                
+                            }
+                            else {
+                                $lien =  $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['competences'] . " " . "|" . " " . $user['duree'] . " " . 'semaines' . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y');
+                            }
+                            ?>
                             <div class="bdd">
                                 <a class="joie" href="../mineures/offre.php?idOffre=<?= $user['id_offre'] ?>"><b><?= $lien ?> </b></a>
                                 <?php
