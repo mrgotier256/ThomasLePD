@@ -2,7 +2,6 @@
 if (@$_SESSION['auth'] != true) {
 session_start();
 }
-
 ?>
 
 </head>
