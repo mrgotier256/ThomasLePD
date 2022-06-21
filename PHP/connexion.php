@@ -18,12 +18,12 @@ if (isset($_SESSION['deleteCookie']) && @$_SESSION['deleteCookie'] == true) // S
 else
 {
 
-        $co= new LoginRepository();
+    $co= new LoginRepository();
     if (@$_COOKIE["auth"] == true)                    //Si les cookies sont actifs, connexion auto
     {
         $verif=$co->loginCookie($_COOKIE['id_user']);
     }
-    else if (isset($_POST['login']) && isset($_POST['mdp'])) // Si pas de cookies, connexion manuelle
+    if (isset($_POST['login']) && isset($_POST['mdp'])) // Si pas de cookies, connexion manuelle
     {
         $verif=$co->login($_POST['login'],hash('md5', $_POST['mdp']));
     }
@@ -43,7 +43,6 @@ else
         $_SESSION['user']['email']=$verif[0]['email'];
         $_SESSION['user']['centre']=$verif[0]['centre'];
         $_SESSION['user']['id_user']=$verif[0]['id_user'];
-
         /* --------------------------------Cookies utilisateurs------------------------------------- */        
         setcookie("auth", $_SESSION['auth'], time()+3600);  /* expire dans 1 heure */
         setcookie("id_user", $_SESSION['user']['id_user'], time()+3600);  /* expire dans 1 heure */
