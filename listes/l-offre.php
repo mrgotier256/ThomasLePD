@@ -25,7 +25,7 @@ if (@$_SESSION['auth'] == true) {
                         {
                             $date = new DateTime($user['date_offre']);
                             $lien = "";
-                            if (@$_SESSION['auth'] == true && @$_SESSION['user']['ID_Role'] == 1) {
+                            if (@$_SESSION['auth'] == true && $_SESSION['user']['ID_Role'] != 4) {
                                 $lien = $user['id_offre'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['competences'] . " " . "|" . " " . $user['duree'] . " " . 'semaines' . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_fiche'];                
                             }
                             else {
@@ -87,9 +87,9 @@ if (@$_SESSION['auth'] == true) {
 
                     </article>
                     <?php 
-            if ($_SESSION['user']['ID_Role'] == 1) {  ?>
+            if ($_SESSION['user']['ID_Role'] != 4) {  ?>
                 <form method="get" action="../delete/delete_offre.php">
-                        <span><input type="id" name="id_offre" placeholder="Saisissez l\'id de l\'offre" required /></span>
+                        <span><input type="id" name="id_offre" placeholder="Saisissez l'id de l'offre" required /></span>
                         <span><input type="submit" value="Supprimer" name="supprimer" /></span>
                     </form>
                 <?php } ?>
