@@ -84,15 +84,14 @@ if (@$_SESSION['auth'] == true) {
                             </ul>
                         </nav>
                         <div id="ajax"> </div>
-
-                    </article>
-                    <?php 
-            if ($_SESSION['user']['ID_Role'] != 4) {  ?>
-                <form method="get" action="../delete/delete_offre.php">
+                        <?php 
+                    if ($_SESSION['user']['ID_Role'] != 4) {  ?>
+                    <form method="get" action="../delete/delete_offre.php">
                         <span><input type="id" name="id_offre" placeholder="Saisissez l'id de l'offre" required /></span>
                         <span><input type="submit" value="Supprimer" name="supprimer" /></span>
                     </form>
-                <?php } ?>
+                    <?php } ?>
+                    </article>
                 </div>
             </div>
         </div>

@@ -68,12 +68,14 @@ if (@$_SESSION['auth'] == true) {
                                 </li>
                             </ul>
                         </nav>
-
-                    </article>
-                    <form method="get" action="../delete/delete.php">
-                        <span><input type="id" name="id_fiche" placeholder="Saisissez l'id" required /></span>
+                        <?php 
+                    if ($_SESSION['user']['ID_Role'] == 1) {  ?>
+                    <form method="get" action="../delete/delete_profil.php">
+                        <span><input type="id" name="id_offre" placeholder="Saisissez l'id de l'élève" required /></span>
                         <span><input type="submit" value="Supprimer" name="supprimer" /></span>
                     </form>
+                    <?php } ?>
+                    </article>
                 </div>
             </div>
         </div>

@@ -23,7 +23,7 @@ if (@$_SESSION['auth'] == true) {
                         }
                         foreach ($users->getEntreprise($page * 10) as $user) {
                             $lien_entreprise = "";
-                            $lien_entreprise = $user['Nom'] . " " . "|" . " " . $user['Secteur_activite'] . " " . "|" . " " . $user['Localite'] . " " . "|" . " " . $user['Nb_stagiaire_cesi'] . " " . " stagiaire(s) " . " " . "|" . " " . $user['evaluation_stagiaire'] . "/5" . " |" . " " . $user['confiance_pilote'] . "/5";
+                            $lien_entreprise = $user['Nom'] . " " . "|" . " " . $user['Secteur_activite'] . " " . "|" . " " . $user['Localite'] . " " . "|" . " " . $user['Nb_stagiaire_cesi'] . " " . " stagiaire(s) " . " " . "|" . " " . $user['evaluation_stagiaire'] . "/5" . " |" . " " . $user['confiance_pilote'] . "/5" . " " . "|" . " " . $user['id_fiche'];
                             echo "<div class=\"bdd\"><a class=\"joie\" href = '../profil/entreprise.php?idFiche=" . $user['id_fiche'] . "&&Nom=" . $user['Nom'] . "'><b>" . $lien_entreprise . "</b></a></div>";
                         }
                         $users->getEntreprise();
@@ -66,14 +66,14 @@ if (@$_SESSION['auth'] == true) {
                                 </li>
                             </ul>
                         </nav>
-                    </article>
-                    <?php 
-                    if ($_SESSION['user']['ID_Role'] == 1 or @$_SESSION['user']['ID_Role'] == 2) {  ?>
-                        <form method="get" action="../delete/delete_entreprise.php">
-                        <span><input type="id" name="id_fiche" placeholder="Saisissez l'id" required /></span>
+                        <?php 
+                    if ($_SESSION['user']['ID_Role'] != 4) {  ?>
+                    <form method="get" action="../delete/delete_offre.php">
+                        <span><input type="id" name="id_offre" placeholder="Saisissez l'id de l'entreprise" required /></span>
                         <span><input type="submit" value="Supprimer" name="supprimer" /></span>
                     </form>
                     <?php } ?>
+                    </article>
                 </div>
             </div>
         </div>

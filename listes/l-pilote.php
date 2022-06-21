@@ -22,22 +22,8 @@ if (@$_SESSION['auth'] == true) {
                             $page = 0;
                         }
                         foreach ($users->getPilote($page * 10) as $user) {
-                            // echo '<div class="bdd"><b>';
-                            // echo $user['id_pilote'], " ";
-                            // echo $user['nom'], " ";
-                            // echo $user['prenom'], " ";
-                            // echo $user['email'], " ";
-                            // echo $user['centre'], " ";
-                            // echo $user['promotion_assignees'], " ";
-                            // echo $user['id_user'], " ";
-                            // echo '</b></div>';
-
-                            // $lien = "";
-                            // $lien =  $user['id_pilote'] . " " . "|" . " " . $user['nom'] . " " . "|" . " " . $user['prenom'] . " " . "|" . " " . $user['centre'] . " " . "|" . " " . $user['email'] . " " . "|" . " " . $user['promotion_assignees'] . " " . "|" . " " . $user['id_user'];
-                            // echo "<div class=\"bdd\"><a class=\"joie\" href = '../profil/avion.php?idUser=" . $user['id_user'] . "'><b>" . $lien . "</b></a></div>";
-
                             $lien = "";
-                            $lien =  $user['nom'] . " " . "|" . " " . $user['prenom'] . " " . "|" . " " . $user['centre'] . " " . "|" . " " . $user['email'] . " " . "|" . " " . $user['promotion_assignees'];
+                            $lien =  $user['nom'] . " " . "|" . " " . $user['prenom'] . " " . "|" . " " . $user['centre'] . " " . "|" . " " . $user['email'] . " " . "|" . " " . $user['promotion_assignees'] . " " . "|" . " " . $user['id_user'];
                             echo "<div class=\"bdd\"><a class=\"joie\" href = '../profil/avion.php?idUser=" . $user['id_user'] . "'><b>" . $lien . "</b></a></div>";
                         }
                         $users->getPilote();
@@ -78,11 +64,14 @@ if (@$_SESSION['auth'] == true) {
                                 </li>
                             </ul>
                         </nav>
-                    </article>
-                    <form method="get" action="../delete/delete.php">
-                        <span><input type="id" name="id_fiche" placeholder="Saisissez l\'id" required /></span>
+                        <?php 
+                    if ($_SESSION['user']['ID_Role'] == 1) {  ?>
+                    <form method="get" action="../delete/delete_profil.php">
+                        <span><input type="id" name="id_offre" placeholder="Saisissez l'id du pilote" required /></span>
                         <span><input type="submit" value="Supprimer" name="supprimer" /></span>
                     </form>
+                    <?php } ?>
+                    </article>
                 </div>
             </div>
         </div>

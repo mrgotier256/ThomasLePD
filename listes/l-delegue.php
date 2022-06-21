@@ -23,10 +23,6 @@ if (@$_SESSION['auth'] == true) {
                             $page = 0;
                         }
                         foreach ($users->getDelegue($page * 10) as $user) {
-                            // $lien = "";
-                            // $lien =  $user['nom'] . " " . "|" . " " . $user['prenom'] . " " . "|" . " " . $user['centre'] . " " . "|" . " " . $user['email'] . " " . "|" . " " . $user['id_user'] . " ";
-                            // echo "<div class=\"bdd\"><a class=\"joie\" href = '../profil/jean.php?idUser=" . $user['id_user'] . "'><b>" . $lien . "</b></a></div>";
-
                             $lien = "";
                             $lien =  $user['nom'] . " " . "|" . " " . $user['prenom'] . " " . "|" . " " . $user['centre'] . " " . "|" . " " . $user['email'];
                             echo "<div class=\"bdd\"><a class=\"joie\" href = '../profil/jean.php?idUser=" . $user['id_user'] . "'><b>" . $lien . "</b></a></div>";
@@ -72,12 +68,14 @@ if (@$_SESSION['auth'] == true) {
                                 </li>
                             </ul>
                         </nav>
-
-                    </article>
-                    <form method="get" action="../delete/delete.php">
-                        <span><input type="id" name="id_fiche" placeholder="Saisissez l\'id" required /></span>
+                        <?php 
+                    if ($_SESSION['user']['ID_Role'] == 1 or $_SESSION['user']['ID_Role'] == 2) {  ?>
+                    <form method="get" action="../delete/delete_profil.php">
+                        <span><input type="id" name="id_offre" placeholder="Saisissez l'id du délégué" required /></span>
                         <span><input type="submit" value="Supprimer" name="supprimer" /></span>
                     </form>
+                    <?php } ?>                                        
+                    </article>
                 </div>
             </div>
         </div>
