@@ -16,10 +16,10 @@ function ConnectBDD()
 
 
 if (@$_POST['GetProfile'] == true && isset($_POST['name'])) {
-    $bdd = ConnectBDD();
+    $bdd  = ConnectBDD();
 
     $Nom = $_POST['name'];
-    $reqt = "SELECT * FROM user WHERE id_auth = (SELECT id_auth FROM authentification WHERE login =" . $this->_connexion->quote($Nom) . ")";
+    $reqt = "SELECT * FROM user WHERE id_auth = (SELECT id_auth FROM authentification WHERE login =" . $bdd->quote($Nom) . ")";
     $result = $bdd->query($reqt);
     $ProfileResult = $result->fetchAll();
 
@@ -140,7 +140,9 @@ class Offre
     public function delOffre($id_offre)
     {
         $this->connexion();
-        $stmt = $this->_connexion->prepare("DELETE FROM `offre_de_stage` WHERE `id_offre` = ? ;");
+        $stmt = $this->_connexion->prepare("SET @idOffre = ?;
+        DELETE FROM `wishlist` WHERE `id_offre` = @idOffre ;
+        DELETE FROM `offre_de_stage` WHERE `id_offre` = @idOffre ;");
         $stmt->bindValue(1, $id_offre, PDO::PARAM_INT);
         return $stmt->execute();
     }
@@ -370,8 +372,6 @@ class Eleve
         SET @IdUti = (SELECT id_user FROM user WHERE id_auth = @IdAuth);
         SET @idEtu =(SELECT id_eleve FROM eleve WHERE id_user = @IdUti);
         
-        SET @Wish = (SELECT ID FROM wishlist WHERE id_eleve = @idEtu);
-        DELETE FROM relation_wishlist_avec_stage WHERE ID = @Wish;
         DELETE FROM wishlist  WHERE id_eleve = @idEtu;
         
         DELETE FROM eleve WHERE id_eleve = @idEtu;
