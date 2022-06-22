@@ -66,8 +66,8 @@ if (@$_SESSION['auth'] == true) {
                         </nav>
                         <?php 
                     if ($_SESSION['user']['ID_Role'] == 1) {  ?>
-                    <form method="get" action="../delete/delete_pilote.php">
-                        <span><input type="id" name="id_offre" placeholder="Saisissez l'id du pilote" required /></span>
+                    <form method="post" action="../delete/delete_pilote.php">
+                        <span><input type="id" name="id_auth" placeholder="Saisissez l'id du pilote" required /></span>
                         <span><input type="submit" value="Supprimer" name="supprimer" /></span>
                     </form>
                     <?php } ?>

@@ -368,7 +368,7 @@ class Eleve
     {
         $this->connexion();
         $stmt = $this->_connexion->prepare('SET @IdAuth = (SELECT id_auth FROM authentification 
-        WHERE login = ' . $this->_connexion->quote($identifiant) . ');
+        WHERE id_auth = ' . $this->_connexion->quote($identifiant) . ');
         SET @IdUti = (SELECT id_user FROM user WHERE id_auth = @IdAuth);
         SET @idEtu =(SELECT id_eleve FROM eleve WHERE id_user = @IdUti);
         
@@ -512,8 +512,8 @@ class Delegue
     {
         $this->connexion();
         $stmt = $this->_connexion->prepare('
-        SET @IdAuth = (SELECT id_auth FROM authentification WHERE login = 
-        ' . $this->_connexion->quote($identifiant) . ');
+        SET @IdAuth = (SELECT id_auth FROM authentification 
+        WHERE id_auth = ' . $this->_connexion->quote($identifiant) . ');
         SET @IdUti = (SELECT id_user FROM user WHERE id_auth = @IdAuth);
         
         DELETE FROM user WHERE id_user = @IdUti AND ID_Role = 3;
@@ -647,7 +647,7 @@ class Pilote
     {
         $this->connexion();
         $stmt = $this->_connexion->prepare('SET @IdAuth = (SELECT id_auth FROM authentification 
-        WHERE login = ' . $this->_connexion->quote($identifiant) . ');
+        WHERE id_auth = ' . $this->_connexion->quote($identifiant) . ');
         SET @IdUti = (SELECT id_user FROM user WHERE id_auth = @IdAuth);
         SET @idProf =(SELECT id_pilote FROM pilote WHERE id_user = @IdUti);
         
