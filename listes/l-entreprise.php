@@ -68,7 +68,7 @@ if (@$_SESSION['auth'] == true) {
                         </nav>
                         <?php 
                     if ($_SESSION['user']['ID_Role'] != 4) {  ?>
-                    <form method="get" action="../delete/delete_offre.php">
+                    <form method="get" action="../delete/delete_entreprise.php">
                         <span><input type="id" name="id_offre" placeholder="Saisissez l'id de l'entreprise" required /></span>
                         <span><input type="submit" value="Supprimer" name="supprimer" /></span>
                     </form>
