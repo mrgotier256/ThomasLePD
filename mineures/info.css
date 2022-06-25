@@ -53,11 +53,13 @@ main {
     background-color: rgb(235, 245, 249);
     padding: 0;
     padding-top: 60px;
+    height: 90%;
 }
 
 footer {
     background-color: #1f2a2b;
     color: azure;
+    height: 10%;
 }
 
 .pad {
