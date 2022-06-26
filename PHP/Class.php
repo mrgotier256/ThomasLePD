@@ -228,8 +228,12 @@ class Entreprise
     public function delEntreprise($id_entreprise)
     {
         $this->connexion();
-        $stmt = $this->_connexion->prepare("DELETE FROM `fiche_entreprise` WHERE `fiche_entreprise`.`id_fiche` = ? ;");
-        $stmt->bindValue(1, $id_entreprise, PDO::PARAM_INT); //id_enteprise
+        var_dump($id_entreprise);
+        $stmt = $this->_connexion->prepare("
+        SET @IdEntreprise = (SELECT id_fiche FROM fiche_entreprise WHERE id_fiche = " . $this->_connexion->quote($id_entreprise) . ");
+        DELETE FROM wishlist WHERE id_offre IN (SELECT id_offre FROM offre_de_stage WHERE id_fiche = @IdEntreprise);
+        DELETE FROM offre_de_stage WHERE id_fiche = @IdEntreprise;
+        DELETE FROM fiche_entreprise WHERE id_fiche = @IdEntreprise;");
         return $stmt->execute();
     }
 
@@ -290,7 +294,7 @@ class Entreprise
             $confiance = $this->_connexion->quote($confiance) . ',';
         }
 
-        $stmt = $this->_connexion->prepare("SET @IdFiche = ".$this->_connexion->quote($idfiche).";
+        $stmt = $this->_connexion->prepare("SET @IdFiche = " . $this->_connexion->quote($idfiche) . ";
 
         UPDATE fiche_entreprise SET " . $U_Nom . " " . $NewNom . " " . $U_Secteur_activite . " " . $secteur . " 
         " . $U_Localite . " " . $localite . " " . $U_Nb_stagiaire_cesi . " " . $nbr_stagiaire . "
@@ -367,12 +371,13 @@ class Eleve
     public function delEleve($identifiant)
     {
         $this->connexion();
-        $stmt = $this->_connexion->prepare('SET @IdAuth = (SELECT id_auth FROM authentification 
-        WHERE id_auth = ' . $this->_connexion->quote($identifiant) . ');
+        $stmt = $this->_connexion->prepare('SET @IdAuth = (SELECT id_auth FROM user 
+        WHERE id_user = ' . $this->_connexion->quote($identifiant) . ');
         SET @IdUti = (SELECT id_user FROM user WHERE id_auth = @IdAuth);
         SET @idEtu =(SELECT id_eleve FROM eleve WHERE id_user = @IdUti);
         
         DELETE FROM wishlist  WHERE id_eleve = @idEtu;
+        DELETE FROM cadidature WHERE id_eleve = @idEtu;
         
         DELETE FROM eleve WHERE id_eleve = @idEtu;
         DELETE FROM user WHERE id_user = @IdUti;
@@ -512,8 +517,8 @@ class Delegue
     {
         $this->connexion();
         $stmt = $this->_connexion->prepare('
-        SET @IdAuth = (SELECT id_auth FROM authentification 
-        WHERE id_auth = ' . $this->_connexion->quote($identifiant) . ');
+        SET @IdAuth = (SELECT id_auth FROM user 
+        WHERE id_user = ' . $this->_connexion->quote($identifiant) . ');
         SET @IdUti = (SELECT id_user FROM user WHERE id_auth = @IdAuth);
         
         DELETE FROM user WHERE id_user = @IdUti AND ID_Role = 3;
@@ -646,8 +651,8 @@ class Pilote
     public function delPilote($identifiant)
     {
         $this->connexion();
-        $stmt = $this->_connexion->prepare('SET @IdAuth = (SELECT id_auth FROM authentification 
-        WHERE id_auth = ' . $this->_connexion->quote($identifiant) . ');
+        $stmt = $this->_connexion->prepare('SET @IdAuth = (SELECT id_auth FROM user 
+        WHERE id_user = ' . $this->_connexion->quote($identifiant) . ');
         SET @IdUti = (SELECT id_user FROM user WHERE id_auth = @IdAuth);
         SET @idProf =(SELECT id_pilote FROM pilote WHERE id_user = @IdUti);
         

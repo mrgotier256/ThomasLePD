@@ -24,7 +24,7 @@ if (@$_SESSION['auth'] == true) {
                         }
                         foreach ($users->getDelegue($page * 10) as $user) {
                             $lien = "";
-                            $lien =  $user['nom'] . " " . "|" . " " . $user['prenom'] . " " . "|" . " " . $user['centre'] . " " . "|" . " " . $user['email'];
+                            $lien =  $user['nom'] . " " . "|" . " " . $user['prenom'] . " " . "|" . " " . $user['centre'] . " " . "|" . " " . $user['email'] . " " . "|" . " " . $user['id_user'];
                             echo "<div class=\"bdd\"><a class=\"joie\" href = '../profil/jean.php?idUser=" . $user['id_user'] . "'><b>" . $lien . "</b></a></div>";
                         }
                         $users->getDelegue();
@@ -68,13 +68,13 @@ if (@$_SESSION['auth'] == true) {
                                 </li>
                             </ul>
                         </nav>
-                        <?php 
-                    if ($_SESSION['user']['ID_Role'] == 1 or $_SESSION['user']['ID_Role'] == 2) {  ?>
-                    <form method="get" action="../delete/delete_delegue.php">
-                        <span><input type="id" name="id_auth" placeholder="Saisissez l'id du délégué" required /></span>
-                        <span><input type="submit" value="Supprimer" name="supprimer" /></span>
-                    </form>
-                    <?php } ?>                                        
+                        <?php
+                        if ($_SESSION['user']['ID_Role'] == 1 or $_SESSION['user']['ID_Role'] == 2) {  ?>
+                            <form method="post" action="../delete/delete_delegue.php">
+                                <span><input type="id" name="id_user" placeholder="Saisissez l'id du délégué" required /></span>
+                                <span><input type="submit" value="Supprimer" name="supprimer" /></span>
+                            </form>
+                        <?php } ?>
                     </article>
                 </div>
             </div>
@@ -85,8 +85,8 @@ if (@$_SESSION['auth'] == true) {
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body" style="color:white;">
-            <?php
-                    include'../link_bar/link_bar.php'; 
+                <?php
+                include '../link_bar/link_bar.php';
                 ?>
                 <div>
                     <a class="deco" href="../deco/deconnexion.php">Deconnexion</a>

@@ -64,13 +64,13 @@ if (@$_SESSION['auth'] == true) {
                                 </li>
                             </ul>
                         </nav>
-                        <?php 
-                    if ($_SESSION['user']['ID_Role'] == 1) {  ?>
-                    <form method="post" action="../delete/delete_pilote.php">
-                        <span><input type="id" name="id_auth" placeholder="Saisissez l'id du pilote" required /></span>
-                        <span><input type="submit" value="Supprimer" name="supprimer" /></span>
-                    </form>
-                    <?php } ?>
+                        <?php
+                        if ($_SESSION['user']['ID_Role'] == 1) {  ?>
+                            <form method="post" action="../delete/delete_pilote.php">
+                                <span><input type="id" name="id_user" placeholder="Saisissez l'id du pilote" required /></span>
+                                <span><input type="submit" value="Supprimer" name="supprimer" /></span>
+                            </form>
+                        <?php } ?>
                     </article>
                 </div>
             </div>
@@ -81,8 +81,8 @@ if (@$_SESSION['auth'] == true) {
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body" style="color:white;">
-            <?php
-                    include'../link_bar/link_bar.php'; 
+                <?php
+                include '../link_bar/link_bar.php';
                 ?>
                 <div>
                     <a class="deco" href="../deco/deconnexion.php">Deconnexion</a>

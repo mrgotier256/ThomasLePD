@@ -21,38 +21,35 @@ if (@$_SESSION['auth'] == true) {
                         } else {
                             $page = 0;
                         }
-                        foreach ($users->getOffre($page * 10) as $user) 
-                        {
+                        foreach ($users->getOffre($page * 10) as $user) {
                             $date = new DateTime($user['date_offre']);
                             $lien = "";
                             if (@$_SESSION['auth'] == true && $_SESSION['user']['ID_Role'] != 4) {
-                                $lien = $user['id_offre'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['competences'] . " " . "|" . " " . $user['duree'] . " " . 'semaines' . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_fiche'];                
-                            }
-                            else {
+                                $lien = $user['id_offre'] . " " . "|" . " " . $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['competences'] . " " . "|" . " " . $user['duree'] . " " . 'semaines' . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y') . " " . "|" . " " . $user['id_offre'];
+                            } else {
                                 $lien =  $user['localite'] . " " . "|" . " " . $user['entreprise'] . " " . "|" . " " . $user['competences'] . " " . "|" . " " . $user['duree'] . " " . 'semaines' . " " . "|" . " " . $user['remuneration'] . " " . '€' . " " . "|" . " " . date_format($date, 'd-m-Y');
                             }
-                            ?>
+                        ?>
                             <div class="bdd">
                                 <a class="joie" href="../mineures/offre.php?idOffre=<?= $user['id_offre'] ?>"><b><?= $lien ?> </b></a>
                                 <?php
-                                if ($_SESSION['user']['ID_Role'] == 4)
-                                {
-                                 ?>
-                                <button id="<?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="ToWishList(<?= $user['id_offre'] ?>)">Ajouter</button>
-                                <button id="<?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="DelFromWishList(<?= $user['id_offre'] ?>)"> Supprimer</button>
+                                if ($_SESSION['user']['ID_Role'] == 4) {
+                                ?>
+                                    <button id="<?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="ToWishList(<?= $user['id_offre'] ?>)">Ajouter</button>
+                                    <button id="<?= $user['id_offre'] ?>" name="<?= $user['id_offre'] ?>" onclick="DelFromWishList(<?= $user['id_offre'] ?>)"> Supprimer</button>
                                 <?php } ?>
                             </div>
-                            <?php }
-                                $users->getOffre();
+                        <?php }
+                        $users->getOffre();
 
-                                $toutesLignes = (int)$users->compterOffre();
-                                $totoalPages = ceil($toutesLignes / 10);
-                                if (isset($_GET['page']) && !empty($_GET['page'])) {
-                                    $currentPage = (int) strip_tags($_GET['page']) - 1;
-                                } else {
-                                    $currentPage = 0;
-                                }
-                                    ?>
+                        $toutesLignes = (int)$users->compterOffre();
+                        $totoalPages = ceil($toutesLignes / 10);
+                        if (isset($_GET['page']) && !empty($_GET['page'])) {
+                            $currentPage = (int) strip_tags($_GET['page']) - 1;
+                        } else {
+                            $currentPage = 0;
+                        }
+                        ?>
 
                         <nav>
                             <ul class="pagination justify-content-center">
@@ -84,13 +81,13 @@ if (@$_SESSION['auth'] == true) {
                             </ul>
                         </nav>
                         <div id="ajax"> </div>
-                        <?php 
-                    if ($_SESSION['user']['ID_Role'] != 4) {  ?>
-                    <form method="get" action="../delete/delete_offre.php">
-                        <span><input type="id" name="id_offre" placeholder="Saisissez l'id de l'offre" required /></span>
-                        <span><input type="submit" value="Supprimer" name="supprimer" /></span>
-                    </form>
-                    <?php } ?>
+                        <?php
+                        if ($_SESSION['user']['ID_Role'] != 4) {  ?>
+                            <form method="get" action="../delete/delete_offre.php">
+                                <span><input type="id" name="id_offre" placeholder="Saisissez l'id de l'offre" required /></span>
+                                <span><input type="submit" value="Supprimer" name="supprimer" /></span>
+                            </form>
+                        <?php } ?>
                     </article>
                 </div>
             </div>

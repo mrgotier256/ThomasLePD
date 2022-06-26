@@ -68,13 +68,13 @@ if (@$_SESSION['auth'] == true) {
                                 </li>
                             </ul>
                         </nav>
-                        <?php 
-                    if ($_SESSION['user']['ID_Role'] == 1 or $_SESSION['user']['ID_Role'] == 2) {  ?>
-                    <form method="post" action="../delete/delete_eleve.php">
-                        <span><input type="id" name="id_auth" placeholder="Saisissez l'id de l'élève" required /></span>
-                        <span><input type="submit" value="Supprimer" name="supprimer" /></span>
-                    </form>
-                    <?php } ?>
+                        <?php
+                        if ($_SESSION['user']['ID_Role'] == 1 or $_SESSION['user']['ID_Role'] == 2) {  ?>
+                            <form method="post" action="../delete/delete_eleve.php">
+                                <span><input type="id" name="id_user" placeholder="Saisissez l'id de l'élève" required /></span>
+                                <span><input type="submit" value="Supprimer" name="supprimer" /></span>
+                            </form>
+                        <?php } ?>
                     </article>
                 </div>
             </div>
@@ -86,7 +86,7 @@ if (@$_SESSION['auth'] == true) {
             </div>
             <div class="offcanvas-body" style="color:white;">
                 <?php
-                    include'../link_bar/link_bar.php'; 
+                include '../link_bar/link_bar.php';
                 ?>
                 <div>
                     <a class="deco" href="../deco/deconnexion.php">Deconnexion</a>
