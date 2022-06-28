@@ -10,17 +10,19 @@ include '../Base/header.php';
             <legend>Connexion</legend>
             <div class="container">
                 <div class="row"><label class="col-6">Identifiant</label>
-                    <input type="text" class="col-6" placeholder="Entrez votre Login" id="login" name="login" required />
+                    <input type="text" class="col-4" placeholder="Entrez votre Login" id="login" name="login" required />
                 </div>
                 <div class="row"><label class="col-6">Mot de passe</label>
-                    <input type="password" class="col-6" placeholder="Entrez votre Mot de Passe" id="mdp" name="mdp" minlength="8" required />
+                    <input type="password" class="col-4" placeholder="Entrez votre Mot de Passe" id="mdp" name="mdp" minlength="8" required />
                 </div>
             </div>
             </br>
             <input type="submit" value="Envoyer" id="envoyer" />
+            <br></br>
+            <a href="../connexion/mdp_oub.php">Mot de passe oublié ?</a>
         </fieldset>
     </form>
-    <a href="../connexion/mdp_oub.php">Mot de passe oublié ?</a>
+    
 </main>
 
 <?php include '../Base/footer.php'; ?>
