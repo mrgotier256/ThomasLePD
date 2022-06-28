@@ -5,7 +5,7 @@
 function ConnectBDD()
 {
     try {
-        $bddconnect = new PDO('mysql:host=localhost;dbname=projet;charset=utf8', 'root', '');
+        $bddconnect = new PDO('mysql:host=localhost;dbname=projet;charset=utf8', 'root', 'root');
         return $bddconnect;
     } catch (PDOException $e) {
         echo $e->getMessage() . "\n";
@@ -36,7 +36,7 @@ class LoginRepository
     private function connexion()
     {
         try {
-            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3306;', 'root', '');
+            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3307;', 'root', 'root');
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
@@ -71,7 +71,7 @@ class Offre
     private function connexion()
     {
         try {
-            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3306;', 'root', '');
+            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3307;', 'root', 'root');
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
@@ -174,7 +174,7 @@ class Entreprise
     private function connexion()
     {
         try {
-            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3306;', 'root', '');
+            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3307;', 'root', 'root');
             $this->_connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
@@ -318,7 +318,7 @@ class Eleve
     private function connexion()
     {
         try {
-            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3306;', 'root', '');
+            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3307;', 'root', 'root');
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
@@ -466,7 +466,7 @@ class Delegue
     private function connexion()
     {
         try {
-            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3306;', 'root', '');
+            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3307;', 'root', 'root');
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
@@ -587,7 +587,7 @@ class Pilote
     private function connexion()
     {
         try {
-            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3306;', 'root', '');
+            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3307;', 'root', 'root');
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
@@ -735,7 +735,7 @@ class Recherche
     private function connexion()
     {
         try {
-            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3306;', 'root', '');
+            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3307;', 'root', 'root');
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
@@ -801,7 +801,7 @@ class WishListe
     private function connexion()
     {
         try {
-            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3306;', 'root', '');
+            $this->_connexion = new PDO('mysql:host=localhost;dbname=projet;port=3307;', 'root', 'root');
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();

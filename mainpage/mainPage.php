@@ -4,6 +4,7 @@ echo '<link rel="stylesheet" href="mainPage.css">';
 include '../base/header.php';
 ?>
 
+
 <main>
     <div>
         <?php 
